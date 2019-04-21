@@ -55,7 +55,7 @@ router.post("/signup", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/map");
+  res.redirect("/basic-map");
 });
 
 module.exports = router;

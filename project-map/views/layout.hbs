@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -13,7 +15,7 @@
 
   <nav>
     <a href="/">Home</a>
-    <a href="/map">NYC map</a>
+    <a href="/map">Basic-map</a>
     <a href="/auth/login">Login</a>
     <a href="/auth/signup">Signup</a>
     <a href="/auth/logout">Logout</a>
@@ -21,6 +23,7 @@
 
   {{{body}}}
 
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
   <script src="/javascripts/script.js"></script>
 </body>
 

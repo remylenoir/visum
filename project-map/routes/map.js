@@ -9,10 +9,16 @@ router.get("/map", (req, res, next) => {
     const userId = req.user._id;
     const userActive = req.user.mapLayer;
     User.find({ _id: userId }).then(user => {
+      console.log(user);
       res.render("basic-map", { user });
     });
-  }
-  res.render("basic-map");
+  } else res.render("basic-map");
 });
 
+router.post("/api", (req, res, next) => {
+  const { userId, activeLayers } = req.body;
+  console.log(userId, activeLayers);
+
+  User.findOneAndUpdate({ _id: userId }, { mapLayer: activeLayers }).then(() => console.log("done"));
+});
 module.exports = router;

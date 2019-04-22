@@ -1,6 +1,7 @@
 //get user ID and mapLayer arrays
 const userId = document.querySelector(".userId").getAttribute("id");
 const userActiveLayers = document.querySelector(".userActive").getAttribute("id");
+const projectUrl = "http://localhost:3000/api";
 
 //To hold layer IDs
 let activeLayers = [];
@@ -182,6 +183,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       if (this.id === "collisions") {
         document.getElementById("console").classList.remove("active");
       }
+      axios.post(projectUrl, { userId, activeLayers }).then(() => console.log("added to database"));
     } else {
       this.className = "active";
       map.setLayoutProperty(clickedLayer, "visibility", "visible");
@@ -190,6 +192,8 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       activeLayers.push(clickedLayer);
 
       //post call to backend
+      // Send a POST request
+      axios.post(projectUrl, { userId, activeLayers }).then(() => console.log("added to database"));
 
       // pass query strings to the URL
       if ("URLSearchParams" in window) {

@@ -5,18 +5,22 @@ const userActiveLayers = document.querySelector(".userActive").getAttribute("id"
 //To hold layer IDs
 let activeLayers = [];
 
-activeLayers = userActiveLayers;
+activeLayers = [userActiveLayers];
 
 console.log(userId, activeLayers);
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFndWV0dGVkaW1zdW0iLCJhIjoiY2p1cjU5bWV3MDg4ejRkbjZ5YTF6bzNibSJ9.5TvJkViFSKc4l9p9JX-41w";
 
+// Set bounds to New York, New York
+var bounds = [[-74.04728500751165, 40.68392799015035], [-73.91058699000139, 40.87764500765852]];
+
 var map = new mapboxgl.Map({
-  container: "map", // container id
-  style: "mapbox://styles/baguettedimsum/cjur5aobc4eah1fmthgditusl", //hosted style id
-  center: [-73.957894, 40.734769], // starting position
-  zoom: 12 // starting zoom
+  container: "map",
+  style: "mapbox://styles/baguettedimsum/cjur5aobc4eah1fmthgditusl",
+  center: [-73.9978, 40.7209],
+  zoom: 11 // starting zoom
+  // maxBounds: bounds
 });
 
 // Add zoom and rotation controls to the map.
@@ -130,10 +134,19 @@ map.on("load", function() {
 //     .addTo(map);
 // });
 
-let activeLayers = [];
-
 // Show/hide layers buttons
-var toggleableLayerIds = ["subway", "wifi", "collisions", "poi", "contours"];
+var toggleableLayerIds = [
+  "subway",
+  "contours",
+  "airports",
+  "wifi",
+  "pools",
+  "daycarecenter",
+  "collisions",
+  "athletic-facilities",
+  "skateparks",
+  "golfcourses"
+];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
   var id = toggleableLayerIds[i];

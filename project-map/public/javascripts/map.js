@@ -1,3 +1,14 @@
+//get user ID and mapLayer arrays
+const userId = document.querySelector(".userId").getAttribute("id");
+const userActiveLayers = document.querySelector(".userActive").getAttribute("id");
+
+//To hold layer IDs
+let activeLayers = [];
+
+activeLayers = userActiveLayers;
+
+console.log(userId, activeLayers);
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFndWV0dGVkaW1zdW0iLCJhIjoiY2p1cjU5bWV3MDg4ejRkbjZ5YTF6bzNibSJ9.5TvJkViFSKc4l9p9JX-41w";
 
@@ -41,8 +52,6 @@ map.on("load", function() {
   });
 });
 
-let activeLayers = [];
-
 // Mapbox show/hide layers
 var toggleableLayerIds = ["contours"];
 
@@ -80,6 +89,8 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 
       // add the layer in the array
       activeLayers.push(clickedLayer);
+
+      //post call to backend
 
       // pass query strings to the URL
       if ("URLSearchParams" in window) {

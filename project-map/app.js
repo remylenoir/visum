@@ -57,21 +57,6 @@ hbs.registerHelper("ifUndefined", (value, options) => {
   }
 });
 
-//Setting up passport
-passport.serializeUser((user, done) => {
-  done(null, user._id);
-});
-
-passport.deserializeUser((_id, done) => {
-  User.findOne({ _id })
-    .then(user => {
-      done(null, user);
-    })
-    .catch(err => {
-      done(err);
-    });
-});
-
 // default value for title local
 app.locals.title = "Welcome to project map";
 

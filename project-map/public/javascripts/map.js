@@ -10,16 +10,75 @@ var map = new mapboxgl.Map({
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
-map.addControl(
-  new mapboxgl.GeolocateControl({
-    positionOptions: {
-      enableHighAccuracy: true
-    },
-    trackUserLocation: true
-  })
-);
 
 map.on("load", function() {
+  // Interactive data's changes console
+  var filterHour = ["==", ["number", ["get", "Hour"]], 12];
+  var filterDay = ["!=", ["string", ["get", "Day"]], "placeholder"];
+
+  map.addLayer({
+    id: "collisions",
+    type: "circle",
+    layout: {
+      visibility: "none"
+    },
+    source: {
+      type: "geojson",
+      data: "./javascripts/nyc-collisions.geojson" // replace this with the url of your own geojson
+    },
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["number", ["get", "Casualty"]], 0, 4, 5, 24],
+      "circle-color": [
+        "interpolate",
+        ["linear"],
+        ["number", ["get", "Casualty"]],
+        0,
+        "#2DC4B2",
+        1,
+        "#3BB3C3",
+        2,
+        "#669EC4",
+        3,
+        "#8B88B6",
+        4,
+        "#A2719B",
+        5,
+        "#AA5E79"
+      ],
+      "circle-opacity": 0.8
+    },
+    filter: ["==", ["number", ["get", "Hour"]], 12]
+  });
+
+  // update hour filter when the slider is dragged
+  document.getElementById("slider").addEventListener("input", function(e) {
+    var hour = parseInt(e.target.value);
+    // update the map
+    map.setFilter("collisions", ["==", ["number", ["get", "Hour"]], hour]);
+
+    // converting 0-23 hour to AMPM format
+    var ampm = hour >= 12 ? "PM" : "AM";
+    var hour12 = hour % 12 ? hour % 12 : 12;
+
+    // update text in the UI
+    document.getElementById("active-hour").innerText = hour12 + ampm;
+  });
+
+  document.getElementById("filters").addEventListener("change", function(e) {
+    var day = e.target.value;
+    // update the map filter
+    if (day === "all") {
+      filterDay = ["!=", ["string", ["get", "Day"]], "placeholder"];
+    } else if (day === "weekday") {
+      filterDay = ["match", ["get", "Day"], ["Sat", "Sun"], false, true];
+    } else if (day === "weekend") {
+      filterDay = ["match", ["get", "Day"], ["Sat", "Sun"], true, false];
+    } else {
+      console.log("error");
+    }
+    map.setFilter("collisions", ["all", filterDay]);
+  });
+
   map.addSource("contours", {
     type: "vector",
     url: "mapbox://mapbox.mapbox-terrain-v2"
@@ -41,15 +100,35 @@ map.on("load", function() {
   });
 });
 
+// POP-UP w/ info on click
+// map.on("click", function(e) {
+//   var features = map.queryRenderedFeatures(e.point, {
+//     layers: ["poi"] // replace this with the name of the layer
+//   });
+
+//   if (!features.length) {
+//     return;
+//   }
+
+//   var feature = features[0];
+
+//   var popup = new mapboxgl.Popup({ offset: [0, -15] })
+//     .setLngLat(feature.geometry.coordinates)
+//     .setHTML("<h3>" + feature.properties.name + "</h3>")
+//     .setLngLat(feature.geometry.coordinates)
+//     .addTo(map);
+// });
+
 let activeLayers = [];
 
-// Mapbox show/hide layers
-var toggleableLayerIds = ["contours"];
+// Show/hide layers buttons
+var toggleableLayerIds = ["subway", "wifi", "collisions", "poi", "contours"];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
   var id = toggleableLayerIds[i];
 
   var link = document.createElement("a");
+  link.id = id;
   link.href = "#";
   link.className = "";
   link.textContent = id;
@@ -74,6 +153,11 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
         var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
         history.pushState(null, "", newRelativePathQuery);
       }
+
+      // Hide the collisions's console ONLY if the button collisions is cliked
+      if (this.id === "collisions") {
+        document.getElementById("console").classList.remove("active");
+      }
     } else {
       this.className = "active";
       map.setLayoutProperty(clickedLayer, "visibility", "visible");
@@ -87,6 +171,11 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
         searchParams.set(clickedLayer, "active");
         var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
         history.pushState(null, "", newRelativePathQuery);
+      }
+
+      // Show the collisions's console ONLY if the button collisions is cliked
+      if (this.id === "collisions") {
+        document.getElementById("console").classList.add("active");
       }
 
       // pass query strings to the URL

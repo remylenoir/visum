@@ -1,2 +1,40 @@
-<nav id="menu"></nav>
 <div id="map"></div>
+
+{{!-- Show/hide layers buttons --}}
+<nav id="menu"></nav>
+
+{{!-- Interactive data's changes console --}}
+<div id="console">
+  <h1>Motor vehicle collisions</h1>
+  <p>Data: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">Motor vehicle
+      collision injuries and deaths</a> in NYC, Apr 2019</p>
+
+  <div class="session">
+    <h2>Casualty</h2>
+    <div class="row colors">
+    </div>
+    <div class="row labels">
+      <div class="label">0</div>
+      <div class="label">1</div>
+      <div class="label">2</div>
+      <div class="label">3</div>
+      <div class="label">4</div>
+      <div class="label">5+</div>
+    </div>
+  </div>
+  <div class='session' id='sliderbar'>
+    <h2>Hour: <label id='active-hour'>12PM</label></h2>
+    <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
+  </div>
+  <div class='session'>
+    <h2>Day of the week</h2>
+    <div class='row' id='filters'>
+      <input id='all' type='radio' name='toggle' value='all' checked='checked'>
+      <label for='all'>All</label>
+      <input id='weekday' type='radio' name='toggle' value='weekday'>
+      <label for='weekday'>Weekday</label>
+      <input id='weekend' type='radio' name='toggle' value='weekend'>
+      <label for='weekend'>Weekend</label>
+    </div>
+  </div>
+</div>

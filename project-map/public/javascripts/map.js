@@ -5,7 +5,7 @@ const userActiveLayers = document.querySelector(".userActive").getAttribute("id"
 //To hold layer IDs
 let activeLayers = [];
 
-activeLayers = userActiveLayers;
+activeLayers = [userActiveLayers];
 
 console.log(userId, activeLayers);
 
@@ -129,8 +129,6 @@ map.on("load", function() {
 //     .setLngLat(feature.geometry.coordinates)
 //     .addTo(map);
 // });
-
-let activeLayers = [];
 
 // Show/hide layers buttons
 var toggleableLayerIds = ["subway", "wifi", "collisions", "poi", "contours"];

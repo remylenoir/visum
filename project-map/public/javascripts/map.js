@@ -1,13 +1,11 @@
 //get user ID and mapLayer arrays
 const userId = document.querySelector(".userId").getAttribute("id");
 const userActiveLayers = document.querySelector(".userActive").getAttribute("id");
-const projectUrl = "http://localhost:3000/api";
+const projectUrl = `${BASE_URL}/api`;
 
 //To hold layer IDs
 let activeLayers = [];
-
 activeLayers = [userActiveLayers];
-
 console.log(userId, activeLayers);
 
 mapboxgl.accessToken =
@@ -28,6 +26,16 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 map.on("load", function() {
+  // If the user is logged in, show the user's saved layers - TO BE FINISHED
+  if ((activeLayers.length = 1 && !activeLayers.includes(""))) {
+    activeLayers.forEach(layer => {
+      if (activeLayers.includes(layer)) {
+        map.setLayoutProperty(layer, "visibility", "visible");
+        console.log(document.getElementById(`${layer}`));
+      }
+    });
+  }
+
   // Interactive data's changes console
   var filterHour = ["==", ["number", ["get", "Hour"]], 12];
   var filterDay = ["!=", ["string", ["get", "Day"]], "placeholder"];
@@ -212,7 +220,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       // window.history.replaceState(null, null, `/?${clickedLayer}=visible`);
       // console.log(location.search);
     }
-    console.log(activeLayers);
+    console.log(userId, activeLayers);
   };
 
   var layers = document.getElementById("menu");

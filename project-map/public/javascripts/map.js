@@ -1,11 +1,12 @@
 //get user ID and mapLayer arrays
 const userId = document.querySelector(".userId").getAttribute("id");
-const userActiveLayers = document.querySelector(".userActive").getAttribute("id");
+const userActiveLayers = document.getElementById("userActive").className.split(/\s+/);
+
 const projectUrl = `${BASE_URL}/api`;
 
 //To hold layer IDs
 let activeLayers = [];
-activeLayers = [userActiveLayers];
+activeLayers = userActiveLayers;
 console.log(userId, activeLayers);
 
 mapboxgl.accessToken =
@@ -191,7 +192,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       if (this.id === "collisions") {
         document.getElementById("console").classList.remove("active");
       }
-      axios.post(projectUrl, { userId, activeLayers }).then(() => console.log("added to database"));
+      axios.post(projectUrl, { userId, activeLayers }).then(() => console.log("removed from database"));
     } else {
       this.className = "active";
       map.setLayoutProperty(clickedLayer, "visibility", "visible");

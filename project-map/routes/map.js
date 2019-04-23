@@ -19,6 +19,10 @@ router.post("/api", (req, res, next) => {
   const { userId, activeLayers } = req.body;
   console.log(userId, activeLayers);
 
-  User.findOneAndUpdate({ _id: userId }, { mapLayer: activeLayers }).then(() => console.log("done"));
+  User.findOneAndUpdate({ _id: userId }, { mapLayer: activeLayers })
+    .then(() => console.log("done"))
+    .catch(err => {
+      console.error(err);
+    });
 });
 module.exports = router;

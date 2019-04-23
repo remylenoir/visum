@@ -71,25 +71,23 @@ map.on("load", function() {
     }
   }
 
-  // If the user is logged-in > retrieving its data and showing the saved layers
-  if (user) {
-    axios
-      .get(PROJECT_URL)
-      .then(res => {
-        activeLayers = res.data[0].mapLayer;
-        activeLayers.forEach(layer => {
-          // Update the URL with the user's saved layers
-          ADD_URL_PARAMS(layer);
+  // If the user is logged-in > retrieving its data and showing the saved layer
+  axios
+    .get(PROJECT_URL)
+    .then(res => {
+      activeLayers = res.data[0].mapLayer;
+      activeLayers.forEach(layer => {
+        // Update the URL with the user's saved layers
+        ADD_URL_PARAMS(layer);
 
-          // Show the user's saved layers
-          map.setLayoutProperty(layer, "visibility", "visible");
-        });
-        console.log("Active layers in the user's profile: ", activeLayers);
-      })
-      .catch(err => {
-        console.error(err);
+        // Show the user's saved layers
+        map.setLayoutProperty(layer, "visibility", "visible");
       });
-  }
+      console.log("Active layers in the user's profile: ", activeLayers);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 
   // Interactive data's changes console
   var filterHour = ["==", ["number", ["get", "Hour"]], 12];
@@ -199,17 +197,15 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       this.className = "inactive";
 
       // If the user is logged-in > remove the layer from the user's profile
-      if (user) {
-        activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
-        axios
-          .post(PROJECT_URL, { activeLayers })
-          .then(() => {
-            console.log("Layer removed from database");
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      }
+      activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
+      axios
+        .post(PROJECT_URL, { activeLayers })
+        .then(() => {
+          console.log("Layer removed from database");
+        })
+        .catch(err => {
+          console.error(err);
+        });
 
       // Update the URL with the user's saved layers
       REMOVE_URL_PARAMS(clickedLayer);
@@ -223,15 +219,13 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       map.setLayoutProperty(clickedLayer, "visibility", "visible");
 
       // If the user is logged-in > add the layer to the user's profile
-      if (user) {
-        activeLayers.push(clickedLayer);
-        axios
-          .post(PROJECT_URL, { activeLayers })
-          .then(() => console.log("Layer added to database"))
-          .catch(err => {
-            console.error(err);
-          });
-      }
+      activeLayers.push(clickedLayer);
+      axios
+        .post(PROJECT_URL, { activeLayers })
+        .then(() => console.log("Layer added to database"))
+        .catch(err => {
+          console.error(err);
+        });
 
       // Update the URL with the user's saved layers
       ADD_URL_PARAMS(clickedLayer);

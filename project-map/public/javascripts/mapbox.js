@@ -19,9 +19,12 @@ map.on("load", function() {
   axios
     .get(PROJECT_URL)
     .then(res => {
-      // If the user is logged in, show the user's saved layers
       activeLayers = res.data[0].mapLayer;
       activeLayers.forEach(layer => {
+        // Update the URL with the user's saved layers
+        ADD_URL_PARAMS(layer);
+
+        // Show the user's saved layers
         map.setLayoutProperty(layer, "visibility", "visible");
       });
       console.log("Active layers in the user's profile: ", activeLayers);
@@ -188,15 +191,13 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       //   var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
       //   history.pushState(null, "", newRelativePathQuery);
       // }
+      // Update the URL with the user's saved layers
+      REMOVE_URL_PARAMS(clickedLayer);
 
       // Hide the collisions's console ONLY if the button collisions is cliked
       if (this.id === "collisions") {
         document.getElementById("console").classList.remove("active");
       }
-
-      // axios
-      //   .post(PROJECT_URL, { mapLayer: activeLayers })
-      //   .then(() => console.log("removed from database"));
     } else {
       this.className = "active";
       map.setLayoutProperty(clickedLayer, "visibility", "visible");
@@ -210,15 +211,8 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
           console.error(err);
         });
 
-      // axios.post(PROJECT_URL, { userId, activeLayers }).then(() => console.log("added to database"));
-
-      // pass query strings to the URL
-      // if ("URLSearchParams" in window) {
-      //   var searchParams = new URLSearchParams(window.location.search);
-      //   searchParams.set(clickedLayer, "active");
-      //   var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
-      //   history.pushState(null, "", newRelativePathQuery);
-      // }
+      // Update the URL with the user's saved layers
+      ADD_URL_PARAMS(clickedLayer);
 
       // Show the collisions's console ONLY if the button collisions is cliked
       if (this.id === "collisions") {

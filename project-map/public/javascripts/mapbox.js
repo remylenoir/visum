@@ -1,22 +1,5 @@
-//get user ID and mapLayer arrays
-const userId = document.querySelector(".userId").getAttribute("id");
-const userActiveLayers = document.getElementById("userActive").className.split(/\s+/);
-const projectUrl = `${BASE_URL}/api`;
-
-//axios get request
-axios
-  .get(projectUrl)
-  .then(res => {
-    console.log(res.data[0].mapLayer);
-  })
-  .catch(err => {
-    console.error(err);
-  });
-
-//To hold layer IDs
+// To hold layer IDs
 let activeLayers = [];
-activeLayers = userActiveLayers;
-console.log(userId, activeLayers);
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFndWV0dGVkaW1zdW0iLCJhIjoiY2p1cjU5bWV3MDg4ejRkbjZ5YTF6bzNibSJ9.5TvJkViFSKc4l9p9JX-41w";
@@ -32,15 +15,20 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 map.on("load", function() {
-  // If the user is logged in, show the user's saved layers - TO BE FINISHED
-  // if ((activeLayers.length = 1 && !activeLayers.includes(""))) {
-  //   activeLayers.forEach(layer => {
-  //     if (activeLayers.includes(layer)) {
-  //       map.setLayoutProperty(layer, "visibility", "visible");
-  //       console.log(document.getElementById(`${layer}`));
-  //     }
-  //   });
-  // }
+  // Axios GET request - retrieving the user's data
+  axios
+    .get(PROJECT_URL)
+    .then(res => {
+      // If the user is logged in, show the user's saved layers
+      activeLayers = res.data[0].mapLayer;
+      activeLayers.forEach(layer => {
+        map.setLayoutProperty(layer, "visibility", "visible");
+      });
+      console.log("Active layers in the user's profile: ", activeLayers);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 
   // Interactive data's changes console
   var filterHour = ["==", ["number", ["get", "Hour"]], 12];
@@ -185,37 +173,52 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 
       // remove the layer from the array
       activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
+      axios
+        .post(PROJECT_URL, { activeLayers })
+        .then(() => {
+          console.log("Layer removed from database");
+        })
+        .catch(err => {
+          console.error(err);
+        });
 
-      if ("URLSearchParams" in window) {
-        var searchParams = new URLSearchParams(window.location.search);
-        searchParams.delete(clickedLayer);
-        var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
-        history.pushState(null, "", newRelativePathQuery);
-      }
+      // if ("URLSearchParams" in window) {
+      //   var searchParams = new URLSearchParams(window.location.search);
+      //   searchParams.delete(clickedLayer);
+      //   var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
+      //   history.pushState(null, "", newRelativePathQuery);
+      // }
 
       // Hide the collisions's console ONLY if the button collisions is cliked
       if (this.id === "collisions") {
         document.getElementById("console").classList.remove("active");
       }
-      axios.post(projectUrl, { userId, activeLayers }).then(() => console.log("removed from database"));
+
+      // axios
+      //   .post(PROJECT_URL, { mapLayer: activeLayers })
+      //   .then(() => console.log("removed from database"));
     } else {
       this.className = "active";
       map.setLayoutProperty(clickedLayer, "visibility", "visible");
 
-      // add the layer in the array
+      // Add the layer in the array and send the array to the DB
       activeLayers.push(clickedLayer);
+      axios
+        .post(PROJECT_URL, { activeLayers })
+        .then(() => console.log("Layer added to database"))
+        .catch(err => {
+          console.error(err);
+        });
 
-      //post call to backend
-      // Send a POST request
-      axios.post(projectUrl, { userId, activeLayers }).then(() => console.log("added to database"));
+      // axios.post(PROJECT_URL, { userId, activeLayers }).then(() => console.log("added to database"));
 
       // pass query strings to the URL
-      if ("URLSearchParams" in window) {
-        var searchParams = new URLSearchParams(window.location.search);
-        searchParams.set(clickedLayer, "active");
-        var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
-        history.pushState(null, "", newRelativePathQuery);
-      }
+      // if ("URLSearchParams" in window) {
+      //   var searchParams = new URLSearchParams(window.location.search);
+      //   searchParams.set(clickedLayer, "active");
+      //   var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
+      //   history.pushState(null, "", newRelativePathQuery);
+      // }
 
       // Show the collisions's console ONLY if the button collisions is cliked
       if (this.id === "collisions") {
@@ -226,7 +229,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       // window.history.replaceState(null, null, `/?${clickedLayer}=visible`);
       // console.log(location.search);
     }
-    console.log(userId, activeLayers);
+    console.log("Updated layers in the user's profile: ", activeLayers);
   };
 
   var layers = document.getElementById("menu");

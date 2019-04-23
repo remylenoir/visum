@@ -1,6 +1,20 @@
 // To hold layer IDs
 let activeLayers = [];
 
+// Layers's IDs to show/hide
+let toggleableLayerIds = [
+  "subway",
+  "contours",
+  "airports",
+  "wifi",
+  "pools",
+  "daycarecenter",
+  "collisions",
+  "athletic-facilities",
+  "skateparks",
+  "golfcourses"
+];
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFndWV0dGVkaW1zdW0iLCJhIjoiY2p1cjU5bWV3MDg4ejRkbjZ5YTF6bzNibSJ9.5TvJkViFSKc4l9p9JX-41w";
 
@@ -15,6 +29,41 @@ var map = new mapboxgl.Map({
 map.addControl(new mapboxgl.NavigationControl());
 
 map.on("load", function() {
+  // Add the contours from another source
+  map.addSource("contours", {
+    type: "vector",
+    url: "mapbox://mapbox.mapbox-terrain-v2"
+  });
+  map.addLayer({
+    id: "contours",
+    type: "line",
+    source: "contours",
+    "source-layer": "contour",
+    layout: {
+      visibility: "none",
+      "line-join": "round",
+      "line-cap": "round"
+    },
+    paint: {
+      "line-color": "#877b59",
+      "line-width": 1
+    }
+  });
+
+  // Show the layers based on the URL parameters
+  if ("URLSearchParams" in window) {
+    var searchParams = new URLSearchParams(window.location.search);
+
+    for (let params of searchParams) {
+      map.setLayoutProperty(params[0], "visibility", "visible");
+    }
+
+    toggleableLayerIds.forEach(layer => {});
+
+    var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
+    history.pushState(null, "", newRelativePathQuery);
+  }
+
   // Axios GET request - retrieving the user's data
   axios
     .get(PROJECT_URL)
@@ -99,26 +148,6 @@ map.on("load", function() {
     }
     map.setFilter("collisions", ["all", filterDay]);
   });
-
-  map.addSource("contours", {
-    type: "vector",
-    url: "mapbox://mapbox.mapbox-terrain-v2"
-  });
-  map.addLayer({
-    id: "contours",
-    type: "line",
-    source: "contours",
-    "source-layer": "contour",
-    layout: {
-      visibility: "none",
-      "line-join": "round",
-      "line-cap": "round"
-    },
-    paint: {
-      "line-color": "#877b59",
-      "line-width": 1
-    }
-  });
 });
 
 // POP-UP w/ info on click
@@ -139,20 +168,6 @@ map.on("load", function() {
 //     .setLngLat(feature.geometry.coordinates)
 //     .addTo(map);
 // });
-
-// Show/hide layers buttons
-var toggleableLayerIds = [
-  "subway",
-  "contours",
-  "airports",
-  "wifi",
-  "pools",
-  "daycarecenter",
-  "collisions",
-  "athletic-facilities",
-  "skateparks",
-  "golfcourses"
-];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
   var id = toggleableLayerIds[i];
@@ -185,12 +200,6 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
           console.error(err);
         });
 
-      // if ("URLSearchParams" in window) {
-      //   var searchParams = new URLSearchParams(window.location.search);
-      //   searchParams.delete(clickedLayer);
-      //   var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
-      //   history.pushState(null, "", newRelativePathQuery);
-      // }
       // Update the URL with the user's saved layers
       REMOVE_URL_PARAMS(clickedLayer);
 
@@ -218,12 +227,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       if (this.id === "collisions") {
         document.getElementById("console").classList.add("active");
       }
-
-      // pass query strings to the URL
-      // window.history.replaceState(null, null, `/?${clickedLayer}=visible`);
-      // console.log(location.search);
     }
-    console.log("Updated layers in the user's profile: ", activeLayers);
   };
 
   var layers = document.getElementById("menu");

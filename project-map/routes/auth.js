@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
+const uploadCloud = require("../config/cloudinary");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -26,11 +27,18 @@ router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
+  let profileImgPath = "https://source.unsplash.com/150x150/?portrait,girl";
+  let profileImgName = username;
+
+  if (!!req.file) {
+    profileImgPath = req.file.url;
+    profileImgPath = req.file.originalname;
+  }
 
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
@@ -43,9 +51,11 @@ router.post("/signup", (req, res, next) => {
       return;
     }
 
-    User.create({ username, password: hashPass })
-      .then(() => {
-        res.redirect("/");
+    User.create({ username, password: hashPass, profileImgPath, profileImgName })
+      .then(user => {
+        req.login(user, () => {
+          res.redirect("/");
+        });
       })
       .catch(err => {
         res.render("auth/signup", { message: "Something went wrong" });

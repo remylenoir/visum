@@ -86,4 +86,7 @@ app.use("/auth", authRoutes);
 const map = require("./routes/map");
 app.use("/", map);
 
+const profile = require("./routes/profile");
+app.use("/auth", profile);
+
 module.exports = app;

@@ -14,7 +14,10 @@ const userSchema = new Schema(
     facebookId: {
       type: String
     },
-    profileImg: {
+    profileImgPath: {
+      type: String
+    },
+    profileImgName: {
       type: String
     },
     mapLayer: {

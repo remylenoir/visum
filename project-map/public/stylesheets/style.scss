@@ -4,6 +4,12 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
 }
 
+nav.top {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+}
+
 //basic-map
 #map {
   position: absolute;

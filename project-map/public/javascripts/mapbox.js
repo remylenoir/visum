@@ -1,5 +1,18 @@
-// To hold layer IDs
+// To hold the active layers IDs later
 let activeLayers = [];
+
+// To check if the user is logged-in before doing axios request later
+let user = undefined;
+
+// Send the user's info to the user API if the user is logged-in
+axios
+  .get(`${PROJECT_URL}/user`)
+  .then(res => {
+    if (user) user = res.data._id;
+  })
+  .catch(err => {
+    console.error(err);
+  });
 
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
@@ -50,37 +63,33 @@ map.on("load", function() {
     }
   });
 
-  // Show the layers based on the URL parameters
+  // Show the layers based on the URL parameters w/out being logged-in
   if ("URLSearchParams" in window) {
     var searchParams = new URLSearchParams(window.location.search);
-
     for (let params of searchParams) {
       map.setLayoutProperty(params[0], "visibility", "visible");
     }
-
-    toggleableLayerIds.forEach(layer => {});
-
-    var newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
-    history.pushState(null, "", newRelativePathQuery);
   }
 
-  // Axios GET request - retrieving the user's data
-  axios
-    .get(PROJECT_URL)
-    .then(res => {
-      activeLayers = res.data[0].mapLayer;
-      activeLayers.forEach(layer => {
-        // Update the URL with the user's saved layers
-        ADD_URL_PARAMS(layer);
+  // If the user is logged-in > retrieving its data and showing the saved layers
+  if (user) {
+    axios
+      .get(PROJECT_URL)
+      .then(res => {
+        activeLayers = res.data[0].mapLayer;
+        activeLayers.forEach(layer => {
+          // Update the URL with the user's saved layers
+          ADD_URL_PARAMS(layer);
 
-        // Show the user's saved layers
-        map.setLayoutProperty(layer, "visibility", "visible");
+          // Show the user's saved layers
+          map.setLayoutProperty(layer, "visibility", "visible");
+        });
+        console.log("Active layers in the user's profile: ", activeLayers);
+      })
+      .catch(err => {
+        console.error(err);
       });
-      console.log("Active layers in the user's profile: ", activeLayers);
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  }
 
   // Interactive data's changes console
   var filterHour = ["==", ["number", ["get", "Hour"]], 12];
@@ -189,16 +198,18 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       map.setLayoutProperty(clickedLayer, "visibility", "none");
       this.className = "inactive";
 
-      // remove the layer from the array
-      activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
-      axios
-        .post(PROJECT_URL, { activeLayers })
-        .then(() => {
-          console.log("Layer removed from database");
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      // If the user is logged-in > remove the layer from the user's profile
+      if (user) {
+        activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
+        axios
+          .post(PROJECT_URL, { activeLayers })
+          .then(() => {
+            console.log("Layer removed from database");
+          })
+          .catch(err => {
+            console.error(err);
+          });
+      }
 
       // Update the URL with the user's saved layers
       REMOVE_URL_PARAMS(clickedLayer);
@@ -211,14 +222,16 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       this.className = "active";
       map.setLayoutProperty(clickedLayer, "visibility", "visible");
 
-      // Add the layer in the array and send the array to the DB
-      activeLayers.push(clickedLayer);
-      axios
-        .post(PROJECT_URL, { activeLayers })
-        .then(() => console.log("Layer added to database"))
-        .catch(err => {
-          console.error(err);
-        });
+      // If the user is logged-in > add the layer to the user's profile
+      if (user) {
+        activeLayers.push(clickedLayer);
+        axios
+          .post(PROJECT_URL, { activeLayers })
+          .then(() => console.log("Layer added to database"))
+          .catch(err => {
+            console.error(err);
+          });
+      }
 
       // Update the URL with the user's saved layers
       ADD_URL_PARAMS(clickedLayer);

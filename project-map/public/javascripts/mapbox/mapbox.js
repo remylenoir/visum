@@ -248,6 +248,7 @@ let geocoder = new MapboxGeocoder({
   countries: "us",
   limit: 12,
   marker: true,
+  bbox: [-74.10748919661376, 40.58020577579612, -73.74873634093505, 40.8590352814073],
   mapboxgl: mapboxgl
 });
 

@@ -16,16 +16,16 @@ axios
 
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
+  "golf",
+  "day-care-center",
+  "airport",
+  "wifi-hotspot",
   "subway",
   "contours",
-  "airports",
-  "golf",
-  "wifi-hotspot",
   "pools",
-  "daycarecenter",
-  "collisions",
   "athletic-facilities",
-  "skateparks"
+  "skateparks",
+  "collisions"
 ];
 
 mapboxgl.accessToken =
@@ -44,6 +44,8 @@ map.addControl(new mapboxgl.NavigationControl());
 map.on("load", function() {
   // POI layers
   addGolf();
+  addDayCareCenter();
+  addAirport();
 
   // Miscellaneous
   addWiFi();
@@ -179,6 +181,11 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
     e.stopPropagation();
 
     var visibility = map.getLayoutProperty(clickedLayer, "visibility");
+
+    // Adjust the zoom if the data is outside ouf the view
+    if (clickedLayer === "airport" && visibility === "none") {
+      map.zoomTo(11, { duration: 2000 });
+    }
 
     if (visibility === "visible") {
       map.setLayoutProperty(clickedLayer, "visibility", "none");

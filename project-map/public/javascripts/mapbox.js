@@ -4,7 +4,14 @@ const userActiveLayers = document.getElementById("userActive").className.split(/
 const projectUrl = `${BASE_URL}/api`;
 
 //axios get request
-axios.get(projectUrl).then(res => console.log(res.data[0].mapLayer));
+axios
+  .get(projectUrl)
+  .then(res => {
+    console.log(res.data[0].mapLayer);
+  })
+  .catch(err => {
+    console.error(err);
+  });
 
 //To hold layer IDs
 let activeLayers = [];
@@ -14,15 +21,11 @@ console.log(userId, activeLayers);
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFndWV0dGVkaW1zdW0iLCJhIjoiY2p1cjU5bWV3MDg4ejRkbjZ5YTF6bzNibSJ9.5TvJkViFSKc4l9p9JX-41w";
 
-// Set bounds to New York, New York
-var bounds = [[-74.04728500751165, 40.68392799015035], [-73.91058699000139, 40.87764500765852]];
-
 var map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/baguettedimsum/cjur5aobc4eah1fmthgditusl",
   center: [-73.9978, 40.7209],
   zoom: 11 // starting zoom
-  // maxBounds: bounds
 });
 
 // Add zoom and rotation controls to the map.

@@ -19,13 +19,13 @@ let toggleableLayerIds = [
   "subway",
   "contours",
   "airports",
+  "golf",
   "wifi-hotspot",
   "pools",
   "daycarecenter",
   "collisions",
   "athletic-facilities",
-  "skateparks",
-  "golf"
+  "skateparks"
 ];
 
 mapboxgl.accessToken =
@@ -49,25 +49,7 @@ map.on("load", function() {
   addWiFi();
 
   // Others
-  map.addSource("contours", {
-    type: "vector",
-    url: "mapbox://mapbox.mapbox-terrain-v2"
-  });
-  map.addLayer({
-    id: "contours",
-    type: "line",
-    source: "contours",
-    "source-layer": "contour",
-    layout: {
-      visibility: "none",
-      "line-join": "round",
-      "line-cap": "round"
-    },
-    paint: {
-      "line-color": "#877b59",
-      "line-width": 1
-    }
-  });
+  addContours();
 
   // Show the layers based on the URL parameters w/out being logged-in
   if ("URLSearchParams" in window) {

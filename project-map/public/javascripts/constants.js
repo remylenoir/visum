@@ -1,6 +1,7 @@
 const BASE_URL = "http://localhost:3000";
 const PROJECT_URL = `${BASE_URL}/api`;
 
+// URL query parameters handling
 const ADD_URL_PARAMS = layer => {
   var searchParams = new URLSearchParams(window.location.search);
   searchParams.set(layer, "active");

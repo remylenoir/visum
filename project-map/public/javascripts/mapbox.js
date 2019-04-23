@@ -182,7 +182,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
   var link = document.createElement("a");
   link.id = id;
   link.href = "#";
-  link.className = "";
+  link.className = "icon";
   link.textContent = id;
 
   link.onclick = function(e) {
@@ -194,7 +194,8 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 
     if (visibility === "visible") {
       map.setLayoutProperty(clickedLayer, "visibility", "none");
-      this.classList = "inactive";
+      this.classList.add("inactive");
+      this.classList.remove("active");
 
       // If the user is logged-in > remove the layer from the user's profile
       activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
@@ -215,7 +216,8 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
         document.getElementById("console").classList.remove("active");
       }
     } else {
-      this.className = "active";
+      this.classList.add("active");
+      this.classList.remove("inactive");
       map.setLayoutProperty(clickedLayer, "visibility", "visible");
 
       // If the user is logged-in > add the layer to the user's profile

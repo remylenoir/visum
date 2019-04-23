@@ -169,11 +169,15 @@ map.on("load", function() {
 for (var i = 0; i < toggleableLayerIds.length; i++) {
   var id = toggleableLayerIds[i];
 
+  let icon = document.createElement("div");
+  icon.className = "icon";
+
   var link = document.createElement("a");
   link.id = id;
   link.href = "#";
-  link.className = "icon";
+  link.className = "";
   link.textContent = id;
+  link.appendChild(icon);
 
   link.onclick = function(e) {
     var clickedLayer = this.textContent;
@@ -233,7 +237,6 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
       }
     }
   };
-
   var layers = document.getElementById("menu");
   layers.appendChild(link);
 }

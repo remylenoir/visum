@@ -20,6 +20,9 @@ const userSchema = new Schema(
     profileImgName: {
       type: String
     },
+    imageId: {
+      type: String
+    },
     mapLayer: {
       type: Array
     }

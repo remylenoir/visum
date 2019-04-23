@@ -12,6 +12,7 @@ const storage = cloudinaryStorage({
   cloudinary,
   folder: "profile-pic",
   allowedFormats: ["jpg", "png"],
+  transformation: [{ width: 300, height: 300, crop: "limit" }],
   filename: (req, file, done) => {
     done(null, file.originalname);
   }

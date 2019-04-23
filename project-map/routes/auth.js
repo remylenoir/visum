@@ -32,12 +32,14 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   const password = req.body.password;
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
-  let profileImgPath = "https://source.unsplash.com/150x150/?portrait,girl";
+  let profileImgPath = "https://source.unsplash.com/150x150/?portrait,cat";
   let profileImgName = username;
+  let imageId = "";
 
   if (!!req.file) {
     profileImgPath = req.file.url;
-    profileImgPath = req.file.originalname;
+    profileImgName = req.file.originalname;
+    imageId = req.file.public_id;
   }
 
   if (username === "" || password === "") {
@@ -51,7 +53,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
       return;
     }
 
-    User.create({ username, password: hashPass, profileImgPath, profileImgName })
+    User.create({ username, password: hashPass, profileImgPath, profileImgName, imageId })
       .then(user => {
         req.login(user, () => {
           res.redirect("/");

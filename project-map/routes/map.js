@@ -20,14 +20,20 @@ router.get("/api", (req, res, next) => {
   }
 });
 
+router.get("/api/user", (req, res, next) => {
+  res.json(req.user);
+});
+
 // POST requests
 router.post("/api", (req, res, next) => {
-  const { activeLayers } = req.body;
-  User.findOneAndUpdate({ _id: req.user._id }, { mapLayer: activeLayers })
-    .then(data => res.json(data))
-    .catch(err => {
-      console.error(err);
-    });
+  if (req.isAuthenticated()) {
+    const { activeLayers } = req.body;
+    User.findOneAndUpdate({ _id: req.user._id }, { mapLayer: activeLayers })
+      .then(data => res.json(data))
+      .catch(err => {
+        console.error(err);
+      });
+  }
 });
 
 module.exports = router;

@@ -19,7 +19,7 @@ let toggleableLayerIds = [
   "subway",
   "contours",
   "airports",
-  "wifi",
+  "wifi-hotspot",
   "pools",
   "daycarecenter",
   "collisions",
@@ -43,29 +43,12 @@ map.addControl(new mapboxgl.NavigationControl());
 
 map.on("load", function() {
   // POI layers
-  map.addLayer({
-    id: "golf",
-    type: "fill",
-    layout: {
-      visibility: "none"
-    },
-    source: {
-      type: "geojson",
-      data: "https://data.cityofnewyork.us/resource/snr4-t66y.geojson"
-    }
-  });
+  addGolf();
 
   // Miscellaneous
-  map.addLayer({
-    id: "wifi-hotspot",
-    type: "heatmap",
-    source: {
-      type: "geojson",
-      data: "https://data.cityofnewyork.us/resource/varh-9tsp.geojson"
-    }
-  });
+  addWiFi();
 
-  // Add the contours from another source
+  // Others
   map.addSource("contours", {
     type: "vector",
     url: "mapbox://mapbox.mapbox-terrain-v2"

@@ -1,13 +1,16 @@
 <div id="map"></div>
 
-{{!-- Show/hide layers buttons --}}
-<nav id="menu"></nav>
+{{!-- Map search and filter menu --}}
+<div class="side-menu">
+  <nav id="menu"></nav>
+</div>
 
 {{!-- Interactive data's changes console --}}
 <div id="console">
   <h1>Motor vehicle collisions</h1>
   <p>Data: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">Motor vehicle
-      collision injuries and deaths</a> in NYC, Apr 2019</p>
+      collision injuries and deaths</a> in NYC, Apr 2019
+  </p>
 
   <div class="session">
     <h2>Casualty</h2>
@@ -22,6 +25,8 @@
       <div class="label">5+</div>
     </div>
   </div>
+
+
   <div class='session' id='sliderbar'>
     <h2>Hour: <label id='active-hour'>12PM</label></h2>
     <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
@@ -40,4 +45,5 @@
 </div>
 
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.2/mapbox-gl-geocoder.min.js'></script>
 <script src="/javascripts/mapbox.js"></script>

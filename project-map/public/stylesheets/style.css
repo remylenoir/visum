@@ -83,4 +83,8 @@ nav.top {
   display: inline-block;
   text-align: center; }
 
+.side-menu {
+  background: #f9f9f9;
+  padding: 20px; }
+
 /*# sourceMappingURL=style.css.map */

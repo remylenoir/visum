@@ -57,6 +57,12 @@ hbs.registerHelper("ifUndefined", (value, options) => {
   }
 });
 
+//auth middleware
+const authenticationCheck = (req, res, next) => {
+  if (req.isAuthenticated()) next();
+  else res.render("error", { errorMessage: "This is a protected route" });
+};
+
 // default value for title local
 app.locals.title = "Welcome to project map";
 

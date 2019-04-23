@@ -15,7 +15,7 @@ router.get("/login", (req, res, next) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/map",
+    successRedirect: "/",
     failureRedirect: "/auth/login",
     failureFlash: true,
     passReqToCallback: true
@@ -55,6 +55,7 @@ router.post("/signup", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
+  req.session.destroy();
   res.redirect("/");
 });
 

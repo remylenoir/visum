@@ -32,11 +32,19 @@ nav.top {
 
 .side-menu {
   background: #f9f9f9;
-  padding: 12px;
+  padding: 10px;
   position: relative;
-  width: 270px;
+  width: 28%;
   height: auto;
-  margin-top: 300px; }
+  margin-top: 150px;
+  left: 10px; }
+  .side-menu .toggle-collapse {
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    background: #2dc4b2;
+    right: -30px;
+    top: 0px; }
   .side-menu .icon {
     width: 25px;
     height: 25px;
@@ -92,5 +100,15 @@ nav.top {
     .side-menu-option #console a {
       text-decoration: none;
       color: #2dc4b2; }
+
+.geocoder {
+  position: absolute;
+  z-index: 1;
+  width: 30%;
+  left: 10px;
+  top: 60px; }
+
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

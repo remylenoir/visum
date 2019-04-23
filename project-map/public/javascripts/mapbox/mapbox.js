@@ -244,8 +244,12 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 //Geo Search function
 let geocoder = new MapboxGeocoder({
   // Initialize the geocoder
-  accessToken: mapboxgl.accessToken // Set the access token
+  accessToken: mapboxgl.accessToken, // Set the access token
+  countries: "us",
+  limit: 12,
+  marker: true,
+  mapboxgl: mapboxgl
 });
 
-// Add the geocoder to the map
-map.addControl(geocoder);
+// Add the geocoder outside of the map
+document.getElementById("geocoder").appendChild(geocoder.onAdd(map));

@@ -1,8 +1,10 @@
 //get user ID and mapLayer arrays
 const userId = document.querySelector(".userId").getAttribute("id");
 const userActiveLayers = document.getElementById("userActive").className.split(/\s+/);
-
 const projectUrl = `${BASE_URL}/api`;
+
+//axios get request
+axios.get(projectUrl).then(res => console.log(res.data[0].mapLayer));
 
 //To hold layer IDs
 let activeLayers = [];
@@ -28,14 +30,14 @@ map.addControl(new mapboxgl.NavigationControl());
 
 map.on("load", function() {
   // If the user is logged in, show the user's saved layers - TO BE FINISHED
-  if ((activeLayers.length = 1 && !activeLayers.includes(""))) {
-    activeLayers.forEach(layer => {
-      if (activeLayers.includes(layer)) {
-        map.setLayoutProperty(layer, "visibility", "visible");
-        console.log(document.getElementById(`${layer}`));
-      }
-    });
-  }
+  // if ((activeLayers.length = 1 && !activeLayers.includes(""))) {
+  //   activeLayers.forEach(layer => {
+  //     if (activeLayers.includes(layer)) {
+  //       map.setLayoutProperty(layer, "visibility", "visible");
+  //       console.log(document.getElementById(`${layer}`));
+  //     }
+  //   });
+  // }
 
   // Interactive data's changes console
   var filterHour = ["==", ["number", ["get", "Hour"]], 12];

@@ -9,7 +9,6 @@ router.get("/map", (req, res, next) => {
     const userId = req.user._id;
     const userActive = req.user.mapLayer;
     User.find({ _id: userId }).then(user => {
-      console.log(user);
       res.render("basic-map", { user });
     });
   } else res.render("basic-map");
@@ -25,4 +24,9 @@ router.post("/api", (req, res, next) => {
       console.error(err);
     });
 });
+
+router.get("/api", (req, res, next) => {
+  User.find().then(data => res.json(data));
+});
+
 module.exports = router;

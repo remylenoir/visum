@@ -187,7 +187,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 
     if (visibility === "visible") {
       map.setLayoutProperty(clickedLayer, "visibility", "none");
-      this.className = "inactive";
+      this.classList = "inactive";
 
       // remove the layer from the array
       activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
@@ -233,3 +233,12 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
   var layers = document.getElementById("menu");
   layers.appendChild(link);
 }
+
+//Geo Search function
+let geocoder = new MapboxGeocoder({
+  // Initialize the geocoder
+  accessToken: mapboxgl.accessToken // Set the access token
+});
+
+// Add the geocoder to the map
+map.addControl(geocoder);

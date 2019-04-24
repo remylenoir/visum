@@ -71,6 +71,11 @@ map.on("load", function() {
   if ("URLSearchParams" in window) {
     var searchParams = new URLSearchParams(window.location.search);
     for (let params of searchParams) {
+      // Show the clusters if the Day Care Center layer is in the URL
+      if (params[0] === "day-care-center") {
+        map.setLayoutProperty("dcc-cluster-count", "visibility", "visible");
+        map.setLayoutProperty("dcc-unclustered-point", "visibility", "visible");
+      }
       map.setLayoutProperty(params[0], "visibility", "visible");
     }
   }

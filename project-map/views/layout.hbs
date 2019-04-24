@@ -65,12 +65,10 @@
             <a href="/auth/profile">Profile</a>
             <a href="/auth/logout">Logout</a>
             {{else}}
-            <a class="button is-primary">
-              <strong>Sign up</strong>
+            <a class="button signup-btn is-primary login-signup-btn">
+              <strong>Sign up / Login</strong>
             </a>
-            <a class="button is-light">
-              Log in
-            </a>
+
             {{/if}}
           </div>
         </div>
@@ -147,7 +145,7 @@
           {{!-- login form --}}
           <div id="login" class="active">
             <h1 class="title is-3">Welcome back!</h1>
-            <div action="/auth/login" method="POST" id="form-container-login">
+            <form action="/auth/login" method="POST" id="form-container-login">
 
               <div class="field">
                 <label for="username" class="label">Username</label>
@@ -173,8 +171,8 @@
                 </div>
               </div>
 
-              </form>
-            </div>
+            </form>
+
           </div>
         </div>
       </div>

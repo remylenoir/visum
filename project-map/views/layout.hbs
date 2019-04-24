@@ -17,6 +17,7 @@
 <body>
   {{!-- top navbar --}}
   <nav class="navbar" role="navigation" aria-label="main navigation">
+
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -43,7 +44,8 @@
 
       <div class="navbar-end">
         {{#if isAuthenticated}}
-        <img src="{{profileImg}}" alt="user" class="profile-pic">
+        <span class="username">{{username}}</span>
+        <img src="{{profileImgPath}}" alt="user" class="profile-pic">
         <a href="/auth/profile" class="navbar-item">
           Profile
         </a>
@@ -51,16 +53,19 @@
           Logout
         </a>
         {{else}}
-        <div class="buttons">
-          <a class="button signup-btn is-primary login-signup-btn">
-            <strong>Login / Signup</strong>
-          </a>
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button signup-btn is-primary login-signup-btn">
+              <strong>Login / Signup</strong>
+            </a>
+          </div>
         </div>
         {{/if}}
 
       </div>
     </div>
     </div>
+
   </nav>
 
 

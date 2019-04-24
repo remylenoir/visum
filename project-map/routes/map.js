@@ -7,8 +7,8 @@ const User = require("../models/User");
 // GET requests
 router.get("/map", (req, res, next) => {
   if (req.isAuthenticated()) {
-    const profileImg = req.user.profileImgPath;
-    res.render("basic-map", { isAuthenticated: true, profileImg });
+    const { profileImgPath, username } = req.user;
+    res.render("basic-map", { isAuthenticated: true, profileImgPath, username });
   } else res.render("basic-map");
 });
 

@@ -236,10 +236,17 @@ body {
 }
 
 // Top Nav bar
-.profile-pic {
-  width: 36px;
-  height: 36px;
-  border-radius: 100%;
-  align-self: center;
-  margin-right: 10px;
+nav {
+  .profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    align-self: center;
+    margin-right: 10px;
+  }
+  .username {
+    font-size: 14px;
+    align-self: center;
+    margin-right: 10px;
+  }
 }

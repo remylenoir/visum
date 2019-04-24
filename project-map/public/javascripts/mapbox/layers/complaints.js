@@ -1,9 +1,6 @@
-const addCollisions = () => {
-  var filterHour = ["==", ["number", ["get", "Hour"]], 12];
-  var filterDay = ["!=", ["string", ["get", "Day"]], "placeholder"];
-
-  const id = "collisions";
-  const data = "./javascripts/mapbox/layers/nyc-collisions.geojson";
+const addComplaints = () => {
+  const id = "complaints";
+  const data = "https://data.cityofnewyork.us/resource/fhrw-4uyv.geojson";
 
   map.addLayer({
     id,

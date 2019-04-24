@@ -129,8 +129,9 @@ body {
   height: auto;
   top: 180px;
   right: 30px;
+
   // Data's detailled view w/ filters
-  #console {
+  #collisions-infobox {
     display: none;
     width: 240px;
     padding: 10px 20px;
@@ -143,11 +144,11 @@ body {
       transform: translateX(10px);
     }
 
-    h1 {
+    h2 {
       font-size: 20px;
       line-height: 30px;
     }
-    h2 {
+    h3 {
       font-size: 14px;
       line-height: 20px;
       margin-bottom: 10px;

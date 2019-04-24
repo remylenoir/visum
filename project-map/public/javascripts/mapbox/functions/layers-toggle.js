@@ -67,7 +67,7 @@ const toggleLayers = () => {
 
         // Hide the collisions's console if the button collisions is cliked
         if (this.id === "collisions") {
-          document.getElementById("console").classList.remove("active");
+          document.getElementById("collisions-infobox").classList.remove("active");
         }
 
         if (this.id === "day-care-center") {
@@ -98,7 +98,7 @@ const toggleLayers = () => {
 
         // Show the collisions's console ONLY if the button collisions is cliked
         if (this.id === "collisions") {
-          document.getElementById("console").classList.add("active");
+          document.getElementById("collisions-infobox").classList.add("active");
         }
 
         if (this.id === "day-care-center") {

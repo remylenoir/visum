@@ -12,10 +12,10 @@ let toggleableLayerIds = [
   "park",
   "golf",
   "skateparks",
-  "athletic-facilities"
+  "athletic-facilities",
   //
   // "pools",
-  // "collisions"
+  "collisions"
 ];
 
 mapboxgl.accessToken =
@@ -71,10 +71,13 @@ map.on("load", function() {
   if ("URLSearchParams" in window) {
     var searchParams = new URLSearchParams(window.location.search);
     for (let params of searchParams) {
-      // Show the clusters if the Day Care Center layer is in the URL
+      // Show the elements linked to the layer if the layer is in the URL
       if (params[0] === "day-care-center") {
         map.setLayoutProperty("dcc-cluster-count", "visibility", "visible");
         map.setLayoutProperty("dcc-unclustered-point", "visibility", "visible");
+      }
+      if (params[0] === "collisions") {
+        document.getElementById("collisions-infobox").classList.add("active");
       }
       map.setLayoutProperty(params[0], "visibility", "visible");
       // Add the active class to the buttons
@@ -106,6 +109,21 @@ map.on("load", function() {
     .catch(err => {
       console.error(err);
     });
+
+  // add markers to map
+  easterEgg.features.forEach(function(marker) {
+    // create a DOM element for the marker
+    var el = document.createElement("div");
+    el.className = "marker";
+    el.style.backgroundImage = `url(${marker.properties.image})`;
+    el.style.width = marker.properties.iconSize[0] + "px";
+    el.style.height = marker.properties.iconSize[1] + "px";
+
+    el.addEventListener("click", function() {});
+
+    // add marker to map
+    new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
+  });
 });
 
 // Show/hide layers function with buttons

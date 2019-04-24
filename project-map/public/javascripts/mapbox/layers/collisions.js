@@ -10,7 +10,7 @@ const addCollisions = () => {
     },
     source: {
       type: "geojson",
-      data: "./javascripts/nyc-collisions.geojson" // replace this with the url of your own geojson
+      data: "./javascripts/mapbox/layers/nyc-collisions.geojson" // replace this with the url of your own geojson
     },
     paint: {
       "circle-radius": ["interpolate", ["linear"], ["number", ["get", "Casualty"]], 0, 4, 5, 24],

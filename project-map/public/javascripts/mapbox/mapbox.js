@@ -4,15 +4,18 @@ let activeLayers = [];
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
   "day-care-center",
-  "golf",
-  "airport",
+  "bike-lane",
+  "bike-shelters",
+  "hurricane-evacuation-center",
   "wifi-hotspot",
-  "subway",
-  "contours",
-  "pools",
-  "athletic-facilities",
+  "airport",
+  "park",
+  "golf",
   "skateparks",
-  "collisions"
+  "athletic-facilities"
+  //
+  // "pools",
+  // "collisions"
 ];
 
 mapboxgl.accessToken =
@@ -20,7 +23,8 @@ mapboxgl.accessToken =
 
 var map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/baguettedimsum/cjur5aobc4eah1fmthgditusl",
+  style: "mapbox://styles/mapbox/streets-v11",
+  // style: "mapbox://styles/baguettedimsum/cjur5aobc4eah1fmthgditusl",
   center: [-73.9978, 40.7209],
   zoom: 11 // starting zoom
 });
@@ -45,22 +49,36 @@ document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
 // Add the layers when the map is loaded
 map.on("load", function() {
   // POI layers
+  // addHealthCenter();
+  addPark();
   addGolf();
-  addDayCareCenter();
   addAirport();
+  addAthletic();
+  addSkatepark();
+  addDayCareCenter();
 
   // Miscellaneous
   addWiFi();
 
   // Others
-  addContours();
+  // addContours();
+  addBikeLane();
   addCollisions();
+  addBikeShelter();
+  addHurricaneCenter();
 
   // Show the layers based on the URL parameters w/out being logged-in
   if ("URLSearchParams" in window) {
     var searchParams = new URLSearchParams(window.location.search);
     for (let params of searchParams) {
+      // Show the clusters if the Day Care Center layer is in the URL
+      if (params[0] === "day-care-center") {
+        map.setLayoutProperty("dcc-cluster-count", "visibility", "visible");
+        map.setLayoutProperty("dcc-unclustered-point", "visibility", "visible");
+      }
       map.setLayoutProperty(params[0], "visibility", "visible");
+      // Add the active class to the buttons
+      document.getElementById(params[0]).classList.add("active");
     }
   }
 
@@ -79,6 +97,9 @@ map.on("load", function() {
 
         // Show the user's saved layers
         map.setLayoutProperty(layer, "visibility", "visible");
+
+        // Add the active class to the buttons
+        document.getElementById(layer).classList.add("active");
       });
       console.log("Active layers in the user's profile: ", activeLayers);
     })
@@ -89,6 +110,3 @@ map.on("load", function() {
 
 // Show/hide layers function with buttons
 toggleLayers();
-
-// Add Pop-ups
-addPop();

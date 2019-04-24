@@ -53,6 +53,7 @@ map.on("load", function() {
   addPark();
   addGolf();
   addAirport();
+  addAthletic();
   addSkatepark();
   addDayCareCenter();
 
@@ -61,7 +62,6 @@ map.on("load", function() {
 
   // Others
   // addContours();
-  addAthletic();
   addBikeLane();
   addCollisions();
   addBikeShelter();

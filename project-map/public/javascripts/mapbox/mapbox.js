@@ -16,8 +16,8 @@ axios
 
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
-  "golf",
   "day-care-center",
+  "golf",
   "airport",
   "wifi-hotspot",
   "subway",

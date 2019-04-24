@@ -5,6 +5,7 @@ let user = undefined;
 axios
   .get(`${PROJECT_URL}/user`)
   .then(res => {
+    // If the user is logged-in, pass its info to the /api/user
     if (!user) {
       user = res.data._id;
     }

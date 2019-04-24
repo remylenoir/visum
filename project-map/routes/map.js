@@ -6,7 +6,9 @@ const User = require("../models/User");
 
 // GET requests
 router.get("/map", (req, res, next) => {
-  res.render("basic-map");
+  if (req.isAuthenticated()) {
+    res.render("basic-map", { isAuthenticated: true });
+  } else res.render("basic-map");
 });
 
 router.get("/api", (req, res, next) => {

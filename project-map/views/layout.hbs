@@ -1,36 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="is-clipped">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
-  <link rel='stylesheet'
-    href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.css' />
-  <link rel="stylesheet" href="/stylesheets/style.css" />
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
 
-  <nav class="top">
-    <a href="/">Home</a>
-    <a href="/map">Basic-map</a>
-    {{#if isAuthenticated}}
-    <a href="/auth/profile">Profile</a>
-    <a href="/auth/logout">Logout</a>
-    {{else}}
-    <a href="/auth/login">Login</a>
-    <a href="/auth/signup">Signup</a>
-    {{/if}}
+
+  {{!-- Signup/login form modal--}}
+  {{!-- <section class="main-nav">
+    <nav class="top">
+      <a href="/">Home</a>
+      <a href="/map">Basic-map</a>
+      {{#if isAuthenticated}}
+      <a href="/auth/profile">Profile</a>
+      <a href="/auth/logout">Logout</a>
+      {{else}}
+      <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Signup</a>
+      {{/if}}
+    </nav>
+  </section> --}}
+
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+
+        <a class="navbar-item" href="/map">
+          Map
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {{#if isAuthenticated}}
+            <a href="/auth/profile">Profile</a>
+            <a href="/auth/logout">Logout</a>
+            {{else}}
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
   </nav>
 
-  <script src="/javascripts/constants.js"></script>
 
+  <script src="/javascripts/constants.js"></script>
   {{{body}}}
 
+
+
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="login-modal">
+        <ul class="tab-group">
+          <li class="tab active login"><a href="#login">Log In</a></li>
+          <li class="tab signup"><a href="#signup">Sign Up</a></li>
+        </ul>
+
+        <div class="tab-content">
+          {{!-- signup --}}
+          <div id="signup" class="">
+            <h1 class="title is-3">Sign Up for Free!</h1>
+
+            <form action="/auth/signup" method="POST" id="form-container-signup" enctype="multipart/form-data">
+              <div class="field">
+                <label for="photo" class="label">Profile picture</label>
+                <div class="control">
+                  {{!-- <input type="file" name="photo" class="input"> --}}
+                  <div class="file">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="photo">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Choose a file…
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label for="username" class="label">Username</label>
+                <div class="control">
+                  <input type="text" name="username" placeholder="JonSnow" class="input">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="password" class="label">Password</label>
+                <div class="control">
+                  <input type="password" name="password" placeholder="Your password" class="input">
+                </div>
+              </div>
+              {{#if message }}
+              <div class="error-message">{{ message }}</div>
+              {{/if}}
+
+              <div class="field is-grouped-right is-grouped">
+                <div class="control">
+                  <button class="button is-primary">Create account</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+          {{!-- login form --}}
+          <div id="login" class="active">
+            <h1 class="title is-3">Welcome back!</h1>
+            <div action="/auth/login" method="POST" id="form-container-login">
+
+              <div class="field">
+                <label for="username" class="label">Username</label>
+                <div class="control">
+                  <input type="text" name="username" placeholder="JonSnow" class="input">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="password" class="label">Password</label>
+                <div class="control">
+                  <input type="password" name="password" placeholder="Your password" class="input">
+                </div>
+              </div>
+
+              {{#if message }}
+              <div class="error-message">{{ message }}</div>
+              {{/if}}
+
+              <div class="field is-grouped-right is-grouped">
+                <div class="constrol">
+                  <button class="button is-primary">Login</button>
+                </div>
+              </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/javascripts/basic-dom.js"></script>
 </body>
 
 </html>

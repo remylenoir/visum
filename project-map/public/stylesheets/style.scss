@@ -1,13 +1,43 @@
+@charset "utf-8";
+@import "../../node_modules/bulma/bulma.sass";
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/form.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+@import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
+@import "geocoder.css";
+
+// Set your brand colors
+$purple: #8a4d76;
+$pink: #fa7c91;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+
+// Update Bulma's global variables
+$family-sans-serif: "Roboto", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+$modal-content-width: 430px;
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
-}
-
-nav.top {
-  position: absolute;
-  z-index: 1;
-  top: 0;
+  font-family: $family-sans-serif;
 }
 
 //basic-map
@@ -18,21 +48,23 @@ nav.top {
   width: 100%;
 }
 
-.session {
-  margin-bottom: 20px;
-}
-.row {
-  height: 12px;
-  width: 100%;
-}
-.colors {
-  background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
-  margin-bottom: 5px;
-}
-.label {
-  width: 15%;
-  display: inline-block;
-  text-align: center;
+#map-view {
+  .session {
+    margin-bottom: 20px;
+  }
+  .row {
+    height: 12px;
+    width: 100%;
+  }
+  .colors {
+    background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
+    margin-bottom: 5px;
+  }
+  .label {
+    width: 15%;
+    display: inline-block;
+    text-align: center;
+  }
 }
 
 //Temporary side menu styling
@@ -128,13 +160,76 @@ nav.top {
 }
 
 //geo coder styling
-.geocoder {
-  position: absolute;
-  z-index: 1;
-  width: 30%;
-  left: 10px;
-  top: 60px;
+#map-view {
+  .geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 30%;
+    left: 10px;
+    top: 60px;
+  }
+  .mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+  }
 }
-.mapboxgl-ctrl-geocoder {
-  min-width: 100%;
+
+// login signup modal
+.modal {
+  .modal-close {
+    position: fixed;
+  }
+}
+
+.login-modal {
+  background: #fff;
+  padding-bottom: 80px;
+  .tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+    display: flex;
+    li {
+      width: 50%;
+    }
+  }
+
+  .tab-group li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #a0b3b0;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  .tab-group li a:hover {
+    background: #179b77;
+    color: #ffffff;
+  }
+  .tab-group .active a {
+    background: #1ab188;
+    color: #ffffff;
+  }
+
+  .tab-content > div:last-child {
+    display: none;
+  }
+}
+
+.tab-content {
+  padding: 0 100px;
+  #signup {
+    display: none;
+  }
+  #login {
+    display: none;
+  }
+  #signup.active {
+    display: block;
+  }
+  #login.active {
+    display: block;
+  }
 }

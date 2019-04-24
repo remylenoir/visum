@@ -15,24 +15,7 @@
 </head>
 
 <body>
-
-
-  {{!-- Signup/login form modal--}}
-  {{!-- <section class="main-nav">
-    <nav class="top">
-      <a href="/">Home</a>
-      <a href="/map">Basic-map</a>
-      {{#if isAuthenticated}}
-      <a href="/auth/profile">Profile</a>
-      <a href="/auth/logout">Logout</a>
-      {{else}}
-      <a href="/auth/login">Login</a>
-      <a href="/auth/signup">Signup</a>
-      {{/if}}
-    </nav>
-  </section> --}}
-
-
+  {{!-- top navbar --}}
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
@@ -59,20 +42,24 @@
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {{#if isAuthenticated}}
-            <a href="/auth/profile">Profile</a>
-            <a href="/auth/logout">Logout</a>
-            {{else}}
-            <a class="button signup-btn is-primary login-signup-btn">
-              <strong>Sign up / Login</strong>
-            </a>
-
-            {{/if}}
-          </div>
+        {{#if isAuthenticated}}
+        <img src="{{profileImg}}" alt="user" class="profile-pic">
+        <a href="/auth/profile" class="navbar-item">
+          Profile
+        </a>
+        <a href="/auth/logout" class="navbar-item">
+          Logout
+        </a>
+        {{else}}
+        <div class="buttons">
+          <a class="button signup-btn is-primary login-signup-btn">
+            <strong>Login / Signup</strong>
+          </a>
         </div>
+        {{/if}}
+
       </div>
+    </div>
     </div>
   </nav>
 

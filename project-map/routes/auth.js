@@ -56,7 +56,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
     User.create({ username, password: hashPass, profileImgPath, profileImgName, imageId })
       .then(user => {
         req.login(user, () => {
-          res.redirect("/");
+          res.redirect("/map");
         });
       })
       .catch(err => {
@@ -68,7 +68,7 @@ router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
 router.get("/logout", (req, res) => {
   req.logout();
   req.session.destroy();
-  res.redirect("/");
+  res.redirect("/map");
 });
 
 module.exports = router;

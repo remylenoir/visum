@@ -36,7 +36,6 @@
         <a class="navbar-item" href="/">
           Home
         </a>
-
         <a class="navbar-item" href="/map">
           Map
         </a>
@@ -44,8 +43,10 @@
 
       <div class="navbar-end">
         {{#if isAuthenticated}}
-        <span class="username">{{username}}</span>
-        <img src="{{profileImgPath}}" alt="user" class="profile-pic">
+        <div class="navbar-item user-details">
+          <span class="username">{{username}}</span>
+          <img src="{{profileImgPath}}" alt="user" class="profile-pic">
+        </div>
         <a href="/auth/profile" class="navbar-item">
           Profile
         </a>

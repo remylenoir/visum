@@ -238,15 +238,12 @@ body {
 // Top Nav bar
 nav {
   .profile-pic {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: auto;
     border-radius: 100%;
-    align-self: center;
-    margin-right: 10px;
   }
   .username {
     font-size: 14px;
-    align-self: center;
     margin-right: 10px;
   }
 }

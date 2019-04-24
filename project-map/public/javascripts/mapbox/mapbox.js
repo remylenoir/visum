@@ -41,6 +41,21 @@ var map = new mapboxgl.Map({
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
+// Geo Search function
+let geocoder = new MapboxGeocoder({
+  // Initialize the geocoder
+  accessToken: mapboxgl.accessToken, // Set the access token
+  countries: "us",
+  limit: 12,
+  marker: true,
+  bbox: [-74.10748919661376, 40.58020577579612, -73.74873634093505, 40.8590352814073],
+  mapboxgl: mapboxgl
+});
+
+// Add the geocoder outside of the map
+document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+
+// Add the layers when the map is loaded
 map.on("load", function() {
   // POI layers
   addGolf();
@@ -52,6 +67,7 @@ map.on("load", function() {
 
   // Others
   addContours();
+  addCollisions();
 
   // Show the layers based on the URL parameters w/out being logged-in
   if ("URLSearchParams" in window) {
@@ -78,179 +94,10 @@ map.on("load", function() {
     .catch(err => {
       console.error(err);
     });
-
-  // Interactive data's changes console
-  var filterHour = ["==", ["number", ["get", "Hour"]], 12];
-  var filterDay = ["!=", ["string", ["get", "Day"]], "placeholder"];
-
-  map.addLayer({
-    id: "collisions",
-    type: "circle",
-    layout: {
-      visibility: "none"
-    },
-    source: {
-      type: "geojson",
-      data: "./javascripts/nyc-collisions.geojson" // replace this with the url of your own geojson
-    },
-    paint: {
-      "circle-radius": ["interpolate", ["linear"], ["number", ["get", "Casualty"]], 0, 4, 5, 24],
-      "circle-color": [
-        "interpolate",
-        ["linear"],
-        ["number", ["get", "Casualty"]],
-        0,
-        "#2DC4B2",
-        1,
-        "#3BB3C3",
-        2,
-        "#669EC4",
-        3,
-        "#8B88B6",
-        4,
-        "#A2719B",
-        5,
-        "#AA5E79"
-      ],
-      "circle-opacity": 0.8
-    },
-    filter: ["==", ["number", ["get", "Hour"]], 12]
-  });
-
-  // update hour filter when the slider is dragged
-  document.getElementById("slider").addEventListener("input", function(e) {
-    var hour = parseInt(e.target.value);
-    // update the map
-    map.setFilter("collisions", ["==", ["number", ["get", "Hour"]], hour]);
-
-    // converting 0-23 hour to AMPM format
-    var ampm = hour >= 12 ? "PM" : "AM";
-    var hour12 = hour % 12 ? hour % 12 : 12;
-
-    // update text in the UI
-    document.getElementById("active-hour").innerText = hour12 + ampm;
-  });
-
-  document.getElementById("filters").addEventListener("change", function(e) {
-    var day = e.target.value;
-    // update the map filter
-    if (day === "all") {
-      filterDay = ["!=", ["string", ["get", "Day"]], "placeholder"];
-    } else if (day === "weekday") {
-      filterDay = ["match", ["get", "Day"], ["Sat", "Sun"], false, true];
-    } else if (day === "weekend") {
-      filterDay = ["match", ["get", "Day"], ["Sat", "Sun"], true, false];
-    } else {
-      console.log("error");
-    }
-    map.setFilter("collisions", ["all", filterDay]);
-  });
 });
 
-// POP-UP w/ info on click
-// map.on("click", function(e) {
-//   var features = map.queryRenderedFeatures(e.point, {
-//     layers: ["poi"] // replace this with the name of the layer
-//   });
+// Show/hide layers function with buttons
+toggleLayers();
 
-//   if (!features.length) {
-//     return;
-//   }
-
-//   var feature = features[0];
-
-//   var popup = new mapboxgl.Popup({ offset: [0, -15] })
-//     .setLngLat(feature.geometry.coordinates)
-//     .setHTML("<h3>" + feature.properties.name + "</h3>")
-//     .setLngLat(feature.geometry.coordinates)
-//     .addTo(map);
-// });
-
-for (var i = 0; i < toggleableLayerIds.length; i++) {
-  var id = toggleableLayerIds[i];
-
-  let icon = document.createElement("div");
-  icon.className = "icon";
-
-  var link = document.createElement("a");
-  link.id = id;
-  link.href = "#";
-  link.className = "";
-  link.textContent = id;
-  link.appendChild(icon);
-
-  link.onclick = function(e) {
-    var clickedLayer = this.textContent;
-    e.preventDefault();
-    e.stopPropagation();
-
-    var visibility = map.getLayoutProperty(clickedLayer, "visibility");
-
-    // Adjust the zoom if the data is outside ouf the view
-    if (clickedLayer === "airport" && visibility === "none") {
-      map.zoomTo(11, { duration: 2000 });
-    }
-
-    if (visibility === "visible") {
-      map.setLayoutProperty(clickedLayer, "visibility", "none");
-      this.classList.add("inactive");
-      this.classList.remove("active");
-
-      // If the user is logged-in > remove the layer from the user's profile
-      activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
-      axios
-        .post(PROJECT_URL, { activeLayers })
-        .then(() => {
-          console.log("Layer removed from database");
-        })
-        .catch(err => {
-          console.error(err);
-        });
-
-      // Update the URL with the user's saved layers
-      REMOVE_URL_PARAMS(clickedLayer);
-
-      // Hide the collisions's console ONLY if the button collisions is cliked
-      if (this.id === "collisions") {
-        document.getElementById("console").classList.remove("active");
-      }
-    } else {
-      this.classList.add("active");
-      this.classList.remove("inactive");
-      map.setLayoutProperty(clickedLayer, "visibility", "visible");
-
-      // If the user is logged-in > add the layer to the user's profile
-      activeLayers.push(clickedLayer);
-      axios
-        .post(PROJECT_URL, { activeLayers })
-        .then(() => console.log("Layer added to database"))
-        .catch(err => {
-          console.error(err);
-        });
-
-      // Update the URL with the user's saved layers
-      ADD_URL_PARAMS(clickedLayer);
-
-      // Show the collisions's console ONLY if the button collisions is cliked
-      if (this.id === "collisions") {
-        document.getElementById("console").classList.add("active");
-      }
-    }
-  };
-  var layers = document.getElementById("menu");
-  layers.appendChild(link);
-}
-
-//Geo Search function
-let geocoder = new MapboxGeocoder({
-  // Initialize the geocoder
-  accessToken: mapboxgl.accessToken, // Set the access token
-  countries: "us",
-  limit: 12,
-  marker: true,
-  bbox: [-74.10748919661376, 40.58020577579612, -73.74873634093505, 40.8590352814073],
-  mapboxgl: mapboxgl
-});
-
-// Add the geocoder outside of the map
-document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+// Add Pop-ups
+addPop();

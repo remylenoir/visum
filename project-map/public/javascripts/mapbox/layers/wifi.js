@@ -1,17 +1,20 @@
 let addWiFi = () => {
+  const id = "wifi-hotspot";
+  const data = "https://data.cityofnewyork.us/resource/varh-9tsp.geojson";
+
   map.addLayer({
-    id: "wifi-hotspot",
+    id,
     type: "heatmap",
     source: {
       type: "geojson",
-      data: "https://data.cityofnewyork.us/resource/varh-9tsp.geojson"
+      data
     },
     layout: {
       visibility: "none"
     }
   });
 
-  map.setPaintProperty("wifi-hotspot", "heatmap-opacity", [
+  map.setPaintProperty(id, "heatmap-opacity", [
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],
@@ -23,7 +26,7 @@ let addWiFi = () => {
     1
   ]);
 
-  map.setPaintProperty("wifi-hotspot", "heatmap-radius", [
+  map.setPaintProperty(id, "heatmap-radius", [
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],

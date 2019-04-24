@@ -69,6 +69,11 @@ const toggleLayers = () => {
         if (this.id === "collisions") {
           document.getElementById("console").classList.remove("active");
         }
+
+        if (this.id === "day-care-center") {
+          map.setLayoutProperty("dcc-cluster-count", "visibility", "none");
+          map.setLayoutProperty("dcc-unclustered-point", "visibility", "none");
+        }
       } else {
         this.classList.add("active");
         this.classList.remove("inactive");
@@ -94,6 +99,11 @@ const toggleLayers = () => {
         // Show the collisions's console ONLY if the button collisions is cliked
         if (this.id === "collisions") {
           document.getElementById("console").classList.add("active");
+        }
+
+        if (this.id === "day-care-center") {
+          map.setLayoutProperty("dcc-cluster-count", "visibility", "visible");
+          map.setLayoutProperty("dcc-unclustered-point", "visibility", "visible");
         }
       }
     };

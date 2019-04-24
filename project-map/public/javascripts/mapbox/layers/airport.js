@@ -1,17 +1,20 @@
 const addAirport = () => {
+  const id = "airport";
+  const data = "https://data.cityofnewyork.us/resource/6dic-zdhf.geojson";
+
   map.addLayer({
-    id: "airport",
+    id,
     type: "fill",
     source: {
       type: "geojson",
-      data: "https://data.cityofnewyork.us/resource/6dic-zdhf.geojson"
+      data
     },
     layout: {
       visibility: "none"
     }
   });
 
-  map.setPaintProperty("airport", "fill-opacity", [
+  map.setPaintProperty(id, "fill-opacity", [
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],
@@ -23,11 +26,5 @@ const addAirport = () => {
     0.9
   ]);
 
-  map.setPaintProperty("airport", "fill-color", [
-    "interpolate",
-    ["exponential", 0.5],
-    ["zoom"],
-    0,
-    "#ff1ab2"
-  ]);
+  map.setPaintProperty(id, "fill-color", ["interpolate", ["exponential", 0.5], ["zoom"], 0, "#ff1ab2"]);
 };

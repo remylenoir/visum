@@ -68,6 +68,7 @@ map.on("load", function() {
   axios
     .get(PROJECT_URL)
     .then(res => {
+      // If the user is logged-in, pass its info from the /api/user
       if (!user) {
         user = res.data._id;
       }

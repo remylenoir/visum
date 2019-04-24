@@ -48,15 +48,14 @@ const toggleLayers = () => {
         this.classList.remove("active");
 
         // If the user is logged-in > remove the layer from the user's profile
-        // console.log(user);
         activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
         axios
           .post(PROJECT_URL, { activeLayers })
           .then(res => {
+            // If the user is logged-in, pass its info from the /api/user
             if (!user) {
               user = res.data._id;
             }
-            console.log("Layer removed from database");
           })
           .catch(err => {
             console.error(err);
@@ -65,7 +64,7 @@ const toggleLayers = () => {
         // Update the URL with the user's saved layers
         REMOVE_URL_PARAMS(clickedLayer);
 
-        // Hide the collisions's console ONLY if the button collisions is cliked
+        // Hide the collisions's console if the button collisions is cliked
         if (this.id === "collisions") {
           document.getElementById("console").classList.remove("active");
         }
@@ -79,10 +78,10 @@ const toggleLayers = () => {
         axios
           .post(PROJECT_URL, { activeLayers })
           .then(res => {
+            // If the user is logged-in, pass its info from the /api/user
             if (!user) {
               user = res.data._id;
             }
-            console.log("Layer added to database");
           })
           .catch(err => {
             console.error(err);

@@ -51,6 +51,20 @@ const addDayCareCenter = () => {
     }
   });
 
+  // map.setPaintProperty("cluster-count", "opacity", [
+  //   "interpolate",
+  //   ["linear", 0.5],
+  //   ["zoom"],
+  //   0,
+  //   0.3,
+  //   11,
+  //   0.6,
+  //   14,
+  //   0.9,
+  //   22,
+  //   1
+  // ]);
+
   // inspect a cluster on click
   map.on("click", "day-care-center", function(e) {
     var features = map.queryRenderedFeatures(e.point, { layers: ["day-care-center"] });

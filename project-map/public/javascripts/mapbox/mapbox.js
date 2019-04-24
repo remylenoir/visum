@@ -1,19 +1,6 @@
 // To hold the active layers IDs later
 let activeLayers = [];
 
-// To check if the user is logged-in before doing axios request later
-let user = undefined;
-
-// Send the user's info to the user API if the user is logged-in
-axios
-  .get(`${PROJECT_URL}/user`)
-  .then(res => {
-    if (user) user = res.data._id;
-  })
-  .catch(err => {
-    console.error(err);
-  });
-
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
   "day-care-center",
@@ -81,6 +68,9 @@ map.on("load", function() {
   axios
     .get(PROJECT_URL)
     .then(res => {
+      if (!user) {
+        user = res.data._id;
+      }
       activeLayers = res.data[0].mapLayer;
       activeLayers.forEach(layer => {
         // Update the URL with the user's saved layers

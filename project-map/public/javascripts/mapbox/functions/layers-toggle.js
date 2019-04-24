@@ -1,3 +1,18 @@
+// To check if the user is logged-in before doing axios request later
+let user = undefined;
+
+// Send the user's info to the user API if the user is logged-in
+axios
+  .get(`${PROJECT_URL}/user`)
+  .then(res => {
+    if (!user) {
+      user = res.data._id;
+    }
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
 const toggleLayers = () => {
   for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
@@ -33,10 +48,14 @@ const toggleLayers = () => {
         this.classList.remove("active");
 
         // If the user is logged-in > remove the layer from the user's profile
+        // console.log(user);
         activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
         axios
           .post(PROJECT_URL, { activeLayers })
-          .then(() => {
+          .then(res => {
+            if (!user) {
+              user = res.data._id;
+            }
             console.log("Layer removed from database");
           })
           .catch(err => {
@@ -59,7 +78,12 @@ const toggleLayers = () => {
         activeLayers.push(clickedLayer);
         axios
           .post(PROJECT_URL, { activeLayers })
-          .then(() => console.log("Layer added to database"))
+          .then(res => {
+            if (!user) {
+              user = res.data._id;
+            }
+            console.log("Layer added to database");
+          })
           .catch(err => {
             console.error(err);
           });

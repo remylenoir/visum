@@ -5,6 +5,9 @@ const addDayCareCenter = () => {
     source: {
       type: "geojson",
       data: "https://data.cityofnewyork.us/resource/sd93-evwm.geojson"
+    },
+    layout: {
+      visibility: "none"
     }
   });
 

@@ -5,6 +5,9 @@ let addWiFi = () => {
     source: {
       type: "geojson",
       data: "https://data.cityofnewyork.us/resource/varh-9tsp.geojson"
+    },
+    layout: {
+      visibility: "none"
     }
   });
 

@@ -5,6 +5,9 @@ const addAirport = () => {
     source: {
       type: "geojson",
       data: "https://data.cityofnewyork.us/resource/6dic-zdhf.geojson"
+    },
+    layout: {
+      visibility: "none"
     }
   });
 

@@ -11264,4 +11264,10 @@ nav .username {
   font-size: 14px;
   margin-right: 10px; }
 
+.user-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
 /*# sourceMappingURL=style.css.map */

@@ -1,8 +1,23 @@
-<section class="profile">
-  <div class="profile-imge">
-    <img src="{{user.profileImgPath}}" alt="{{user.profileImgName}}">
+<div class="section">
+  <div class="container">
+    <div class="user-profile">
+      <div class="profile-imge">
+        <img src="{{profileImgPath}}" alt="{{profileImgName}}">
+      </div>
+
+      <h1 class="title is-2">{{username}}</h1>
+      {{#if mapLayer}}
+      <ul>
+        <h4>My favourites map filters:</h4>
+        {{#each mapLayer}}
+        <li>
+          {{this}}
+        </li>
+        {{/each}}
+      </ul>
+      {{else}}
+      <h4>You don't have any favoutite map filters yet</h4>
+      {{/if}}
+    </div>
   </div>
-  <h2>{{user.username}}</h2>
-
-
-</section>
+</div>

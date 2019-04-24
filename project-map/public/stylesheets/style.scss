@@ -247,3 +247,15 @@ nav {
     margin-right: 10px;
   }
 }
+
+//Profile page
+.user-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .profile-img {
+    border-radius: 100%;
+    margin-bottom: 20px;
+  }
+}

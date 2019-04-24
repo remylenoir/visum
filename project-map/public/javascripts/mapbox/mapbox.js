@@ -77,6 +77,8 @@ map.on("load", function() {
         map.setLayoutProperty("dcc-unclustered-point", "visibility", "visible");
       }
       map.setLayoutProperty(params[0], "visibility", "visible");
+      // Add the active class to the buttons
+      document.getElementById(params[0]).classList.add("active");
     }
   }
 
@@ -95,6 +97,9 @@ map.on("load", function() {
 
         // Show the user's saved layers
         map.setLayoutProperty(layer, "visibility", "visible");
+
+        // Add the active class to the buttons
+        document.getElementById(layer).classList.add("active");
       });
       console.log("Active layers in the user's profile: ", activeLayers);
     })

@@ -64,6 +64,7 @@ const toggleLayers = () => {
 
         // Update the URL with the user's saved layers
         REMOVE_URL_PARAMS(clickedLayer);
+        CURRENT_URL.value = window.location.href;
 
         // Hide the collisions's console if the button collisions is cliked
         if (this.id === "collisions") {
@@ -95,6 +96,7 @@ const toggleLayers = () => {
 
         // Update the URL with the user's saved layers
         ADD_URL_PARAMS(clickedLayer);
+        CURRENT_URL.value = window.location.href;
 
         // Show the collisions's console ONLY if the button collisions is cliked
         if (this.id === "collisions") {

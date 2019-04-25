@@ -1,6 +1,10 @@
 // To hold the active layers IDs later
 let activeLayers = [];
 
+// To hold the current URL
+const CURRENT_URL = document.getElementById("current-url");
+let clipboard = new ClipboardJS(".copy-url");
+
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
   "day-care-center",
@@ -109,6 +113,8 @@ map.on("load", function() {
     .catch(err => {
       console.error(err);
     });
+
+  CURRENT_URL.value = window.location.href;
 
   // add markers to map
   easterEgg.features.forEach(function(marker) {

@@ -77,6 +77,12 @@ nav {
   }
 }
 
+//error message
+.error-message {
+  font-weight: bold;
+  color: red;
+}
+
 //global transition
 a,
 a.button,
@@ -477,8 +483,4 @@ body {
       flex-direction: column;
     }
   }
-//error message
-.error-message {
-  font-weight: bold;
-  color: red;
 }

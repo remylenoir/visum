@@ -11214,6 +11214,15 @@ body {
         background-color: #209cee;
         border-color: #209cee;
         color: #ffffff; }
+  .side-menu hr {
+    height: 1px;
+    margin: 0.8rem 0 1rem;
+    background-color: #d0d1cd; }
+  .side-menu .share-url .control-input {
+    width: 100%; }
+  .side-menu .share-url input,
+  .side-menu .share-url .button {
+    font-size: 0.8rem; }
 
 .side-menu-option {
   position: absolute;

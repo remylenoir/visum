@@ -181,6 +181,23 @@ body {
       }
     }
   }
+
+  hr {
+    height: 1px;
+    margin: 0.8rem 0 1rem;
+    background-color: #d0d1cd;
+  }
+
+  .share-url {
+    .control-input {
+      width: 100%;
+    }
+
+    input,
+    .button {
+      font-size: 0.8rem;
+    }
+  }
 }
 
 //Temporary side menu option styling

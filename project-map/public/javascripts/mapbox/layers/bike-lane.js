@@ -1,5 +1,5 @@
 const addBikeLane = () => {
-  const id = "bike-lane";
+  const id = "bike-routes";
   const data = "./javascripts/mapbox/layers/nyc-bikelane.geojson";
 
   map.addLayer({

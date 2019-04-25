@@ -11104,9 +11104,25 @@ a.navbar-item,
     .section.is-large {
       padding: 18rem 1.5rem; } }
 
-.navbar-brand .navbar-item {
+nav .profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: #a0b3b0; }
+
+nav .username {
+  font-size: 14px;
+  margin-right: 10px;
+  color: #363636; }
+
+nav .navbar-brand .navbar-item {
   font-family: "Kaushan Script", cursive;
   font-size: 2rem; }
+  nav .navbar-brand .navbar-item a {
+    display: flex; }
+
+nav .navbar-brand .navbar-burger {
+  height: 60px; }
 
 a,
 a.button,
@@ -11338,15 +11354,6 @@ body {
     display: block; }
   .tab-content #login.active {
     display: block; }
-
-nav .profile-pic {
-  width: 30px;
-  height: auto;
-  border-radius: 100%; }
-
-nav .username {
-  font-size: 14px;
-  margin-right: 10px; }
 
 .user-profile {
   display: flex;

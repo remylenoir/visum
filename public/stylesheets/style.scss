@@ -41,10 +41,32 @@ $input-border-color: transparent;
 $input-shadow: none;
 $modal-content-width: 430px;
 
-// Navbar
-.navbar-brand .navbar-item {
-  font-family: $brand;
-  font-size: 2rem;
+// Top Nav bar
+nav {
+  .profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #a0b3b0;
+  }
+  .username {
+    font-size: 14px;
+    margin-right: 10px;
+    color: $dark;
+  }
+  .navbar-brand {
+    .navbar-item {
+      font-family: $brand;
+      font-size: 2rem;
+
+      a {
+        display: flex;
+      }
+    }
+    .navbar-burger {
+      height: 60px;
+    }
+  }
 }
 
 //global transition
@@ -356,19 +378,6 @@ body {
   }
   #login.active {
     display: block;
-  }
-}
-
-// Top Nav bar
-nav {
-  .profile-pic {
-    width: 30px;
-    height: auto;
-    border-radius: 100%;
-  }
-  .username {
-    font-size: 14px;
-    margin-right: 10px;
   }
 }
 

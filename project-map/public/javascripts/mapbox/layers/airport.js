@@ -18,13 +18,11 @@ const addAirport = () => {
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],
-    10.9,
+    9.9,
     0,
-    11,
-    0.6,
-    14,
-    0.9
+    10,
+    0.6
   ]);
 
-  map.setPaintProperty(id, "fill-color", ["interpolate", ["exponential", 0.5], ["zoom"], 0, "#ff1ab2"]);
+  map.setPaintProperty(id, "fill-color", ["interpolate", ["exponential", 0.5], ["zoom"], 0, "#ff1ddf"]);
 };

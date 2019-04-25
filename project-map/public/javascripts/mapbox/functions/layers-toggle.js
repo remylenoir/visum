@@ -30,14 +30,14 @@ const toggleLayers = () => {
 
     //add a class depends on their ID
     if (link.id === "day-care-center") icon.classList.add(dayCare);
-    if (link.id === "bike-lane") icon.classList.add(bikeLane);
+    if (link.id === "bike-routes") icon.classList.add(bikeRoutes);
     if (link.id === "bike-shelters") icon.classList.add(bikeShelters);
     if (link.id === "hurricane-evacuation-center") icon.classList.add(hurricaneCenter);
     if (link.id === "wifi-hotspot") icon.classList.add(wifi);
     if (link.id === "airport") icon.classList.add(airport);
     if (link.id === "park") icon.classList.add(cityPark);
     if (link.id === "golf") icon.classList.add(golf);
-    if (link.id === "skateparks") icon.classList.add(skateparks);
+    // if (link.id === "skateparks") icon.classList.add(skateparks);
     if (link.id === "athletic-facilities") icon.classList.add(athletic);
     if (link.id === "collisions") icon.classList.add(collisions);
 
@@ -49,10 +49,7 @@ const toggleLayers = () => {
       var visibility = map.getLayoutProperty(clickedLayer, "visibility");
 
       // Adjust the zoom if the data is outside ouf the view
-      if (clickedLayer === "airport" && visibility === "none") {
-        map.zoomTo(11, { duration: 2000 });
-      }
-      if (clickedLayer === "golf" && visibility === "none") {
+      if ((clickedLayer === "airport" || clickedLayer === "golf") && visibility === "none") {
         map.zoomTo(10, { duration: 2000 });
       }
 
@@ -77,7 +74,8 @@ const toggleLayers = () => {
 
         // Update the URL with the user's saved layers
         REMOVE_URL_PARAMS(clickedLayer);
-        CURRENT_URL.value = window.location.href;
+        // Update the Share-link URL
+        SHARE_URL.value = window.location.href;
 
         // Hide the collisions's console if the button collisions is cliked
         if (this.id === "collisions") {
@@ -109,7 +107,8 @@ const toggleLayers = () => {
 
         // Update the URL with the user's saved layers
         ADD_URL_PARAMS(clickedLayer);
-        CURRENT_URL.value = window.location.href;
+        // Update the Share-link URL
+        SHARE_URL.value = window.location.href;
 
         // Show the collisions's console ONLY if the button collisions is cliked
         if (this.id === "collisions") {

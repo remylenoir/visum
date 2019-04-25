@@ -8,10 +8,14 @@
     <div class="toggle-collapse"><i class="fas fa-chevron-left"></i></div>
     <div class="layer-icon"><i class="fas fa-layer-group"></i></div>
     <div class="side-menu-content">
+      <h6 class="subtitle is-6">Layers</h6>
       <nav id="menu"></nav>
-      <h6 class="subtitle is-6">Share with your map with your friend!</h6>
-      <div class="field has-addons">
-        <div class="control">
+
+      <hr>
+
+      <h6 class="subtitle is-6">Share your map with a friend!</h6>
+      <div class="share-url field has-addons">
+        <div class="control control-input">
           <input class="input" type="url" id="current-url" value="">
         </div>
         <div class="control">
@@ -22,6 +26,7 @@
       </div>
     </div>
   </div>
+
   {{!-- Interactive data's changes console --}}
   <div class=" side-menu-option">
 
@@ -71,20 +76,17 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js'></script>
 
 {{!-- DATA LAYERS --}}
+<script src="/javascripts/mapbox/layers/easter.js"></script>
+<script src="/javascripts/mapbox/layers/daycarecenter.js"></script>
 <script src="/javascripts/mapbox/layers/wifi.js"></script>
+<script src="/javascripts/mapbox/layers/bike-shelter.js"></script>
+<script src="/javascripts/mapbox/layers/collisions.js"></script>
 <script src="/javascripts/mapbox/layers/park.js"></script>
 <script src="/javascripts/mapbox/layers/golf.js"></script>
-<script src="/javascripts/mapbox/layers/easter.js"></script>
 <script src="/javascripts/mapbox/layers/airport.js"></script>
 <script src="/javascripts/mapbox/layers/athletic.js"></script>
-<script src="/javascripts/mapbox/layers/skatepark.js"></script>
-<script src="/javascripts/mapbox/layers/bike-lane.js"></script>
 <script src="/javascripts/mapbox/layers/hurricane.js"></script>
-<script src="/javascripts/mapbox/layers/collisions.js"></script>
-<script src="/javascripts/mapbox/layers/bike-shelter.js"></script>
-<script src="/javascripts/mapbox/layers/daycarecenter.js"></script>
-{{!-- <script src="/javascripts/mapbox/layers/healthcenter.js"></script> --}}
-{{!-- <script src="/javascripts/mapbox/layers/contours.js"></script> --}}
+<script src="/javascripts/mapbox/layers/bike-lane.js"></script>
 
 <script src="/javascripts/mapbox/functions/clipboard.min.js"></script>
 <script src="/javascripts/mapbox/functions/layers-toggle.js"></script>

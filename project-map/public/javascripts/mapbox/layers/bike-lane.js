@@ -1,10 +1,11 @@
 const addBikeLane = () => {
-  const id = "bike-lane";
+  const id = "bike-routes";
   const data = "./javascripts/mapbox/layers/nyc-bikelane.geojson";
 
   map.addLayer({
     id,
-    type: "fill",
+    type: "line",
+    width: 1.5,
     source: {
       type: "geojson",
       data
@@ -14,17 +15,25 @@ const addBikeLane = () => {
     }
   });
 
-  map.setPaintProperty(id, "fill-opacity", [
+  map.setPaintProperty(id, "line-opacity", [
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],
-    10.9,
+    9.9,
     0,
-    11,
+    10,
     0.6,
     14,
     0.9
   ]);
 
-  map.setPaintProperty(id, "fill-color", ["interpolate", ["exponential", 0.5], ["zoom"], 0, "#ff1ab2"]);
+  map.setPaintProperty(id, "line-color", [
+    "interpolate",
+    ["linear"],
+    ["zoom"],
+    11,
+    "hsl(190, 88%, 58%)",
+    17,
+    "hsl(230, 92%, 52%)"
+  ]);
 };

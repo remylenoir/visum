@@ -11118,9 +11118,10 @@ body {
 #map,
 #home-map {
   position: absolute;
-  top: 0;
+  top: 52px;
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  height: calc(100vh - $nav-height); }
 
 #map-view .session {
   margin-bottom: 20px; }
@@ -11226,6 +11227,15 @@ body {
         background-color: #209cee;
         border-color: #209cee;
         color: #ffffff; }
+  .side-menu hr {
+    height: 1px;
+    margin: 0.8rem 0 1rem;
+    background-color: #d0d1cd; }
+  .side-menu .share-url .control-input {
+    width: 100%; }
+  .side-menu .share-url input,
+  .side-menu .share-url .button {
+    font-size: 0.8rem; }
 
 .side-menu.collapsed {
   width: 60px;

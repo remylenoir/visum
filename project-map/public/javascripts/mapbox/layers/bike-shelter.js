@@ -5,7 +5,7 @@ const addBikeShelter = () => {
   map.addLayer({
     id,
     type: "symbol",
-    minzoom: 11,
+    minzoom: 10,
     source: {
       type: "geojson",
       data

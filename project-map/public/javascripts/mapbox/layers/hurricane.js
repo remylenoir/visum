@@ -5,14 +5,14 @@ const addHurricaneCenter = () => {
   map.addLayer({
     id,
     type: "symbol",
-    minzoom: 11,
+    minzoom: 10,
     source: {
       type: "geojson",
       data
     },
     layout: {
       visibility: "none",
-      "icon-image": "rocket-15",
+      "icon-image": "castle-15",
       "icon-allow-overlap": true
     }
   });

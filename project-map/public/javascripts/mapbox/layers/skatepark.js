@@ -18,9 +18,9 @@ const addSkatepark = () => {
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],
-    10.9,
+    9.9,
     0,
-    11,
+    10,
     0.6,
     14,
     0.9

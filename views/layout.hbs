@@ -49,12 +49,15 @@
       <div class="navbar-end">
         {{#if isAuthenticated}}
         <div class="navbar-item user-details">
-          <span class="username">{{username}}</span>
-          <img src="{{profileImgPath}}" alt="user" class="profile-pic">
+          <a href="/auth/profile" class="navbar-item-profile">
+            <span class="username">{{username}}</span>
+          </a>
+          <a href="/auth/profile">
+            <img src="{{profileImgPath}}" alt="" class="profile-pic">
+          </a>
+
         </div>
-        <a href="/auth/profile" class="navbar-item">
-          Profile
-        </a>
+
         <a href="/auth/logout" class="navbar-item">
           Logout
         </a>

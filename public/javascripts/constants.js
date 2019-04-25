@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://visum-app.herokuapp.com";
 const PROJECT_URL = `${BASE_URL}/api`;
 
 // URL query parameters handling

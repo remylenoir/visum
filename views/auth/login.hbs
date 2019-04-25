@@ -1,33 +1,25 @@
-<div class="login-signup-wrapper">
-  <div class="card login-signup-form">
-    <div class="card-content">
-      <h1 class="title is-3">Welcome back!</h1>
-      <form action="/auth/login" method="POST" id="form-container-login">
 
-        <div class="field">
-          <label for="username" class="label">Username</label>
-          <div class="control">
-            <input type="text" name="username" placeholder="JonSnow" class="input">
-          </div>
-        </div>
+<h2>Login</h2>
 
-        <div class="field">
-          <label for="password" class="label">Password</label>
-          <div class="control">
-            <input type="password" name="password" placeholder="Your password" class="input">
-          </div>
-        </div>
+<form action="/auth/login" method="POST" id="form-container">
+  <label for="username">Username</label>
+  <input id="username" type="text" name="username" placeholder="JonSnow">
 
-        {{#if message }}
-        <div class="error-message">{{ message }}</div>
-        {{/if}}
+  <br><br>
 
-        <div class="field is-grouped-right is-grouped">
-          <div class="constrol">
-            <button class="button is-primary">Login</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" placeholder="Your password">
+  <br>
+  {{#if message }}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
+
+  <br><br>
+
+  <button>Login</button>
+
+  <p class="account-message">
+    Don't have an account yet?
+    <a href="/auth/signup">Signup</a>
+  </p>
+</form>

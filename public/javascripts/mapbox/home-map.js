@@ -11,7 +11,7 @@ var map = new mapboxgl.Map({
 function rotateCamera(timestamp) {
   // clamp the rotation between 0 -360 degrees
   // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
-  map.rotateTo((timestamp / 100) % 360, { duration: 0 });
+  map.rotateTo((timestamp / 300) % 360, { duration: 0 });
   // Request the next frame of the animation.
   requestAnimationFrame(rotateCamera);
 }

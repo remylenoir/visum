@@ -347,20 +347,16 @@ body {
 }
 
 //login-signup static form
-.login-signup-wrapper {
-  width: 100vh;
-  height: 100vh;
+.login-signup-page {
   display: flex;
-  align-content: center;
+  justify-content: center;
   align-items: center;
-}
-.card.login-signup-form {
-  width: 30%;
-  .mapboxgl-ctrl-top-right {
-    top: 10px;
-    right: 10px;
+  padding-top: 50px;
+  .card {
+    width: 30%;
   }
 }
+
 // login signup modal
 .modal {
   .modal-close {
@@ -481,4 +477,8 @@ body {
       flex-direction: column;
     }
   }
+//error message
+.error-message {
+  font-weight: bold;
+  color: red;
 }

@@ -1,14 +1,27 @@
 @charset "utf-8";
-@import "../../node_modules/bulma/bulma.sass";
-@import "../../node_modules/bulma/sass/utilities/_all.sass";
-@import "../../node_modules/bulma/sass/base/_all.sass";
-@import "../../node_modules/bulma/sass/elements/button.sass";
-@import "../../node_modules/bulma/sass/elements/container.sass";
-@import "../../node_modules/bulma/sass/elements/form.sass";
-@import "../../node_modules/bulma/sass/elements/title.sass";
-@import "../../node_modules/bulma/sass/components/navbar.sass";
-@import "../../node_modules/bulma/sass/layout/hero.sass";
-@import "../../node_modules/bulma/sass/layout/section.sass";
+<<<<<<< HEAD
+@import "node_modules/bulma/bulma.sass";
+@import "node_modules/bulma/sass/utilities/_all.sass";
+@import "node_modules/bulma/sass/base/_all.sass";
+@import "node_modules/bulma/sass/elements/button.sass";
+@import "node_modules/bulma/sass/elements/container.sass";
+@import "node_modules/bulma/sass/elements/form.sass";
+@import "node_modules/bulma/sass/elements/title.sass";
+@import "node_modules/bulma/sass/components/navbar.sass";
+@import "node_modules/bulma/sass/layout/hero.sass";
+@import "node_modules/bulma/sass/layout/section.sass";
+=======
+@import "bulma.sass";
+@import "sass/utilities/_all.sass";
+@import "sass/base/_all.sass";
+@import "sass/elements/button.sass";
+@import "sass/elements/container.sass";
+@import "sass/elements/form.sass";
+@import "sass/elements/title.sass";
+@import "sass/components/navbar.sass";
+@import "sass/layout/hero.sass";
+@import "sass/layout/section.sass";
+>>>>>>> bc4175da588c8c6afd28cf6a4a40c148b0051492
 @import "geocoder.css";
 
 // Set your brand colors

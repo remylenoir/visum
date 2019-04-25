@@ -45,8 +45,9 @@ var map = new mapboxgl.Map({
   zoom: 11
 });
 
-// Add zoom and rotation controls to the map.
+// Add zoom+rotation and fullscreen controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new mapboxgl.FullscreenControl());
 
 // Geo Search function
 let geocoder = new MapboxGeocoder({

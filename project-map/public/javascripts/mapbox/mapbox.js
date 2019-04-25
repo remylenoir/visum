@@ -1,24 +1,21 @@
 // To hold the active layers IDs later
 let activeLayers = [];
 
-// To hold the current URL
-const CURRENT_URL = document.getElementById("current-url");
+// Hold the current URL for the Share to a friend function
 let clipboard = new ClipboardJS(".copy-url");
+const SHARE_URL = document.getElementById("current-url");
 
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
   "day-care-center",
   "bike-lane",
   "bike-shelters",
-  "hurricane-evacuation-center",
   "wifi-hotspot",
+  "hurricane-evacuation-center",
   "airport",
   "park",
   "golf",
-  "skateparks",
   "athletic-facilities",
-  //
-  // "pools",
   "collisions"
 ];
 
@@ -27,10 +24,12 @@ mapboxgl.accessToken =
 
 var map = new mapboxgl.Map({
   container: "map",
-  style: "mapbox://styles/mapbox/streets-v11",
+  style: "mapbox://styles/baguettedimsum/cjuwhqoe80f9v1fmlhjgkjlcd",
   // style: "mapbox://styles/baguettedimsum/cjur5aobc4eah1fmthgditusl",
   center: [-73.9978, 40.7209],
-  zoom: 11 // starting zoom
+  bbox: [-74.10748919661376, 40.58020577579612, -73.74873634093505, 40.8590352814073],
+  pitch: 40,
+  zoom: 11
 });
 
 // Add zoom and rotation controls to the map.
@@ -52,24 +51,16 @@ document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
 
 // Add the layers when the map is loaded
 map.on("load", function() {
-  // POI layers
-  // addHealthCenter();
-  addPark();
-  addGolf();
+  addDayCareCenter();
+  addCollisions();
+  addWiFi();
   addAirport();
   addAthletic();
-  addSkatepark();
-  addDayCareCenter();
-
-  // Miscellaneous
-  addWiFi();
-
-  // Others
-  // addContours();
-  addBikeLane();
-  addCollisions();
+  addGolf();
   addBikeShelter();
   addHurricaneCenter();
+  addBikeLane();
+  addPark();
 
   // Show the layers based on the URL parameters w/out being logged-in
   if ("URLSearchParams" in window) {
@@ -114,7 +105,7 @@ map.on("load", function() {
       console.error(err);
     });
 
-  CURRENT_URL.value = window.location.href;
+  SHARE_URL.value = window.location.href;
 
   // add markers to map
   easterEgg.features.forEach(function(marker) {

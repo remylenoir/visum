@@ -18,9 +18,9 @@ let addWiFi = () => {
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],
-    10.9,
+    9.9,
     0,
-    11,
+    10,
     0.2,
     14,
     1
@@ -30,7 +30,7 @@ let addWiFi = () => {
     "interpolate",
     ["exponential", 0.5],
     ["zoom"],
-    11,
+    10,
     10,
     22,
     35

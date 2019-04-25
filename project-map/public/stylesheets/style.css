@@ -11278,6 +11278,16 @@ body {
 #map-view .mapboxgl-ctrl-geocoder {
   min-width: 100%; }
 
+.login-signup-wrapper {
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  align-items: center; }
+
+.card.login-signup-form {
+  width: 30%; }
+
 .modal .modal-close {
   position: fixed; }
 

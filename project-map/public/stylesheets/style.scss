@@ -278,6 +278,18 @@ body {
   }
 }
 
+//login-signup static form
+.login-signup-wrapper {
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.card.login-signup-form {
+  width: 30%;
+}
+
 // login signup modal
 .modal {
   .modal-close {

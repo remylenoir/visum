@@ -11117,9 +11117,10 @@ body {
 #map,
 #home-map {
   position: absolute;
-  top: 0;
+  top: 52px;
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  height: calc(100vh - $nav-height); }
 
 #map-view .session {
   margin-bottom: 20px; }

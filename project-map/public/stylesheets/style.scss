@@ -40,6 +40,9 @@ $input-border-color: transparent;
 $input-shadow: none;
 $modal-content-width: 430px;
 
+// Other properties
+$nav-height: 52px;
+
 //global transition
 a,
 a.button,
@@ -57,9 +60,10 @@ body {
 #map,
 #home-map {
   position: absolute;
-  top: 0;
+  top: $nav-height;
   bottom: 0;
   width: 100%;
+  height: calc(100vh - $nav-height);
 }
 
 #map-view {

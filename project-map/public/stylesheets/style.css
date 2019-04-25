@@ -11269,5 +11269,8 @@ nav .username {
   justify-content: center;
   align-items: center;
   flex-direction: column; }
+  .user-profile .profile-img {
+    border-radius: 100%;
+    margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */

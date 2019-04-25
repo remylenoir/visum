@@ -11114,6 +11114,8 @@ nav .username {
   font-size: 14px;
   margin-right: 10px;
   color: #363636; }
+  nav .username:hover {
+    color: #3273dc; }
 
 nav .navbar-brand .navbar-item {
   font-family: "Kaushan Script", cursive;
@@ -11122,7 +11124,7 @@ nav .navbar-brand .navbar-item {
     display: flex; }
 
 nav .navbar-brand .navbar-burger {
-  height: 60px; }
+  height: 65px; }
 
 a,
 a.button,
@@ -11143,21 +11145,36 @@ body {
   width: 100%;
   height: calc(100vh - 65px); }
 
-#map-view .session {
-  margin-bottom: 20px; }
+#map-view {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw; }
+  #map-view .session {
+    margin-bottom: 20px; }
+  #map-view .row {
+    height: 12px;
+    width: 100%; }
+  #map-view .colors {
+    background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
+    margin-bottom: 5px; }
+  #map-view .label {
+    width: 15%;
+    display: inline-block;
+    text-align: center; }
+  #map-view .geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 345px;
+    left: 15px;
+    top: 85px; }
+  #map-view .mapboxgl-ctrl-geocoder {
+    min-width: 100%; }
 
-#map-view .row {
-  height: 12px;
-  width: 100%; }
-
-#map-view .colors {
-  background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
-  margin-bottom: 5px; }
-
-#map-view .label {
-  width: 15%;
-  display: inline-block;
-  text-align: center; }
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+  margin: 15px 15px 0; }
 
 .home section {
   position: absolute;
@@ -11185,13 +11202,15 @@ body {
   margin-right: 10px; }
 
 .side-menu {
-  background: #f9f9f9;
-  padding: 20px 10px;
-  position: relative;
-  width: 28%;
+  width: 345px;
   height: auto;
-  margin-top: 150px;
-  left: 15px; }
+  left: 15px;
+  padding: 20px;
+  margin-top: 75px;
+  position: relative;
+  background: #f9f9f9;
+  border-radius: 4px 0 4px 4px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1); }
   .side-menu h6.subtitle {
     margin-bottom: 10px; }
   .side-menu .toggle-collapse {
@@ -11204,21 +11223,24 @@ body {
     color: #fff;
     display: flex;
     align-items: center;
-    cursor: pointer; }
+    cursor: pointer;
+    border-radius: 0 4px 4px 0; }
     .side-menu .toggle-collapse i {
       margin-left: 15px; }
     .side-menu .toggle-collapse:hover {
       background: #00b89c; }
   .side-menu .layer-icon {
-    width: 36px;
-    height: 36px;
+    width: 22px;
+    height: 22px;
     display: none;
     text-align: center;
     color: #363636; }
     .side-menu .layer-icon i {
       font-size: 24px; }
   .side-menu .show {
-    display: block; }
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .side-menu .hide {
     display: none; }
   .side-menu #menu {
@@ -11260,24 +11282,36 @@ body {
 .side-menu.collapsed {
   width: 60px;
   height: 60px;
-  background: #eff0eb; }
+  background: #eff0eb;
+  border-radius: 4px 0 0 4px; }
 
 .side-menu-option {
-  position: absolute;
-  width: 260px;
-  height: auto;
-  top: 180px;
-  right: 30px; }
+  position: relative;
+  top: 40px;
+  width: 100%;
+  margin: 0 15px; }
   .side-menu-option #collisions-infobox {
     display: none;
-    width: 240px;
-    padding: 10px 20px;
-    transform: translateX(-340px);
+    width: calc(100% - 30px);
+    padding: 20px;
+    border-radius: 4px;
     background-color: white;
-    transition: all ease-in-out 700ms; }
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1); }
+    .side-menu-option #collisions-infobox .description {
+      width: 20%; }
+    .side-menu-option #collisions-infobox .casualty {
+      width: 20%; }
+    .side-menu-option #collisions-infobox .sliderbar {
+      width: 20%; }
+    .side-menu-option #collisions-infobox .days {
+      width: 20%; }
+      .side-menu-option #collisions-infobox .days #filters {
+        display: flex;
+        justify-content: space-around;
+        align-items: first baseline; }
     .side-menu-option #collisions-infobox.active {
-      display: block;
-      transform: translateX(10px); }
+      display: flex;
+      justify-content: space-around; }
     .side-menu-option #collisions-infobox h2 {
       font-size: 20px;
       line-height: 30px; }
@@ -11288,16 +11322,6 @@ body {
     .side-menu-option #collisions-infobox a {
       text-decoration: none;
       color: #2dc4b2; }
-
-#map-view .geocoder {
-  position: absolute;
-  z-index: 1;
-  width: 30%;
-  left: 15px;
-  top: 85px; }
-
-#map-view .mapboxgl-ctrl-geocoder {
-  min-width: 100%; }
 
 .login-signup-wrapper {
   width: 100vh;
@@ -11363,5 +11387,36 @@ body {
   .user-profile .profile-img img {
     border-radius: 100%;
     margin-bottom: 20px; }
+
+@media only screen and (max-width: 780px) {
+  #geocoder,
+  .side-menu {
+    max-width: 260px; }
+  .side-menu {
+    margin-top: 90px; }
+    .side-menu-option {
+      top: -40px; }
+    .side-menu #menu {
+      flex-direction: column;
+      max-height: 140px;
+      overflow-y: scroll;
+      flex-wrap: nowrap; }
+      .side-menu #menu a {
+        justify-content: center;
+        min-height: 40px;
+        padding: 6px 12px; }
+  #collisions-infobox {
+    display: none; }
+    #collisions-infobox .description,
+    #collisions-infobox .casualty,
+    #collisions-infobox .sliderbar,
+    #collisions-infobox .days {
+      width: 100% !important; }
+    #collisions-infobox .days #filters {
+      display: flex;
+      justify-content: space-around;
+      align-items: first baseline; }
+    #collisions-infobox.active {
+      flex-direction: column; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -41,6 +41,10 @@ $input-border-color: transparent;
 $input-shadow: none;
 $modal-content-width: 430px;
 
+// Other elements properties
+$layer-icon-size: 22px;
+$uiboxes: 345px;
+
 // Top Nav bar
 nav {
   .profile-pic {
@@ -53,6 +57,10 @@ nav {
     font-size: 14px;
     margin-right: 10px;
     color: $dark;
+
+    &:hover {
+      color: #3273dc;
+    }
   }
   .navbar-brand {
     .navbar-item {
@@ -64,7 +72,7 @@ nav {
       }
     }
     .navbar-burger {
-      height: 60px;
+      height: 65px;
     }
   }
 }
@@ -76,8 +84,6 @@ a.button,
 .side-menu {
   transition: all 0.25s ease-in-out;
 }
-
-$layer-icon-width: 36px;
 
 body {
   margin: 0;
@@ -96,6 +102,13 @@ body {
 }
 
 #map-view {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
+
   .session {
     margin-bottom: 20px;
   }
@@ -112,6 +125,20 @@ body {
     display: inline-block;
     text-align: center;
   }
+  .geocoder {
+    position: absolute;
+    z-index: 1;
+    width: $uiboxes;
+    left: 15px;
+    top: 85px;
+  }
+  .mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+  }
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+  margin: 15px 15px 0;
 }
 
 //home section
@@ -150,16 +177,20 @@ body {
 
 //Temporary side menu styling
 .side-menu {
-  background: #f9f9f9;
-  padding: 20px 10px;
-  position: relative;
-  width: 28%;
+  width: $uiboxes;
   height: auto;
-  margin-top: 150px;
   left: 15px;
+  padding: 20px;
+  margin-top: 75px;
+  position: relative;
+  background: #f9f9f9;
+  border-radius: 4px 0 4px 4px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+
   h6.subtitle {
     margin-bottom: 10px;
   }
+
   .toggle-collapse {
     position: absolute;
     width: 40px;
@@ -171,17 +202,20 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-radius: 0 4px 4px 0;
+
     i {
       margin-left: 15px;
     }
+
     &:hover {
       background: darken($primary, 5%);
     }
   }
 
   .layer-icon {
-    width: $layer-icon-width;
-    height: $layer-icon-width;
+    width: $layer-icon-size;
+    height: $layer-icon-size;
     display: none;
     text-align: center;
     color: $dark;
@@ -191,7 +225,9 @@ body {
   }
 
   .show {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .hide {
     display: none;
@@ -251,28 +287,47 @@ body {
   width: 60px;
   height: 60px;
   background: $beige-lighter;
+  border-radius: 4px 0 0 4px;
 }
 
 //Temporary side menu option styling
 .side-menu-option {
-  position: absolute;
-  width: 260px;
-  height: auto;
-  top: 180px;
-  right: 30px;
+  position: relative;
+  top: 40px;
+  width: 100%;
+  margin: 0 15px;
 
   // Data's detailled view w/ filters
   #collisions-infobox {
     display: none;
-    width: 240px;
-    padding: 10px 20px;
-    transform: translateX(-340px);
+    width: calc(100% - 30px);
+    padding: 20px;
+    border-radius: 4px;
     background-color: white;
-    transition: all ease-in-out 700ms;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+
+    .description {
+      width: 20%;
+    }
+    .casualty {
+      width: 20%;
+    }
+    .sliderbar {
+      width: 20%;
+    }
+    .days {
+      width: 20%;
+
+      #filters {
+        display: flex;
+        justify-content: space-around;
+        align-items: first baseline;
+      }
+    }
 
     &.active {
-      display: block;
-      transform: translateX(10px);
+      display: flex;
+      justify-content: space-around;
     }
 
     h2 {
@@ -288,20 +343,6 @@ body {
       text-decoration: none;
       color: #2dc4b2;
     }
-  }
-}
-
-//geo coder styling
-#map-view {
-  .geocoder {
-    position: absolute;
-    z-index: 1;
-    width: 30%;
-    left: 15px;
-    top: 85px;
-  }
-  .mapboxgl-ctrl-geocoder {
-    min-width: 100%;
   }
 }
 
@@ -390,5 +431,54 @@ body {
   .profile-img img {
     border-radius: 100%;
     margin-bottom: 20px;
+  }
+}
+
+// // Responsive
+@media only screen and (max-width: 780px) {
+  #geocoder,
+  .side-menu {
+    max-width: 260px;
+  }
+  .side-menu {
+    margin-top: 90px;
+
+    &-option {
+      top: -40px;
+    }
+
+    #menu {
+      flex-direction: column;
+      max-height: 140px;
+      overflow-y: scroll;
+      flex-wrap: nowrap;
+
+      a {
+        justify-content: center;
+        min-height: 40px;
+        padding: 6px 12px;
+      }
+    }
+  }
+
+  #collisions-infobox {
+    display: none;
+
+    .description,
+    .casualty,
+    .sliderbar,
+    .days {
+      width: 100% !important;
+    }
+    .days {
+      #filters {
+        display: flex;
+        justify-content: space-around;
+        align-items: first baseline;
+      }
+    }
+    &.active {
+      flex-direction: column;
+    }
   }
 }

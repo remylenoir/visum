@@ -1,16 +1,4 @@
 @charset "utf-8";
-<<<<<<< HEAD
-@import "node_modules/bulma/bulma.sass";
-@import "node_modules/bulma/sass/utilities/_all.sass";
-@import "node_modules/bulma/sass/base/_all.sass";
-@import "node_modules/bulma/sass/elements/button.sass";
-@import "node_modules/bulma/sass/elements/container.sass";
-@import "node_modules/bulma/sass/elements/form.sass";
-@import "node_modules/bulma/sass/elements/title.sass";
-@import "node_modules/bulma/sass/components/navbar.sass";
-@import "node_modules/bulma/sass/layout/hero.sass";
-@import "node_modules/bulma/sass/layout/section.sass";
-=======
 @import "bulma.sass";
 @import "sass/utilities/_all.sass";
 @import "sass/base/_all.sass";
@@ -21,7 +9,6 @@
 @import "sass/components/navbar.sass";
 @import "sass/layout/hero.sass";
 @import "sass/layout/section.sass";
->>>>>>> bc4175da588c8c6afd28cf6a4a40c148b0051492
 @import "geocoder.css";
 
 // Set your brand colors
@@ -297,20 +284,16 @@ body {
 }
 
 //login-signup static form
-.login-signup-wrapper {
-  width: 100vh;
-  height: 100vh;
+.login-signup-page {
   display: flex;
-  align-content: center;
+  justify-content: center;
   align-items: center;
-}
-.card.login-signup-form {
-  width: 30%;
-  .mapboxgl-ctrl-top-right {
-    top: 10px;
-    right: 10px;
+  padding-top: 50px;
+  .card {
+    width: 30%;
   }
 }
+
 // login signup modal
 .modal {
   .modal-close {
@@ -395,4 +378,10 @@ nav {
     border-radius: 100%;
     margin-bottom: 20px;
   }
+}
+
+//error message
+.error-message {
+  font-weight: bold;
+  color: red;
 }

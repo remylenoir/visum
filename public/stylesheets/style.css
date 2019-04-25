@@ -11283,18 +11283,13 @@ body {
 #map-view .mapboxgl-ctrl-geocoder {
   min-width: 100%; }
 
-.login-signup-wrapper {
-  width: 100vh;
-  height: 100vh;
+.login-signup-page {
   display: flex;
-  align-content: center;
-  align-items: center; }
-
-.card.login-signup-form {
-  width: 30%; }
-  .card.login-signup-form .mapboxgl-ctrl-top-right {
-    top: 10px;
-    right: 10px; }
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px; }
+  .login-signup-page .card {
+    width: 30%; }
 
 .modal .modal-close {
   position: fixed; }
@@ -11356,5 +11351,8 @@ nav .username {
   .user-profile .profile-img img {
     border-radius: 100%;
     margin-bottom: 20px; }
+
+.error-message {
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */

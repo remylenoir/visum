@@ -22,9 +22,15 @@ $beige-lighter: #eff0eb;
 $family-sans-serif: "Roboto", sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
+$primary: $turquoise;
+$link: $blue;
+$info: $cyan;
+$success: $green;
+$warning: $yellow;
+$danger: $red;
+$dark: $grey-darker;
+$text: $grey-dark;
+$widescreen-enabled: true;
 $fullhd-enabled: false;
 
 // Update some of Bulma's component variables
@@ -33,6 +39,13 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 $modal-content-width: 430px;
+
+//global transition
+a,
+a.button,
+.toggle-collapse {
+  transition: 0.25s ease-in-out;
+}
 
 body {
   margin: 0;
@@ -97,34 +110,46 @@ body {
   }
 }
 
+.icon {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
 //Temporary side menu styling
 .side-menu {
   background: #f9f9f9;
-  padding: 10px;
+  padding: 20px 10px;
   position: relative;
   width: 28%;
   height: auto;
   margin-top: 150px;
   left: 10px;
+  h6.subtitle {
+    margin-bottom: 10px;
+  }
   .toggle-collapse {
     position: absolute;
-    width: 30px;
-    height: 50px;
-    background: #2dc4b2;
-    right: -30px;
+    width: 40px;
+    height: 60px;
+    background: $primary;
+    right: -40px;
     top: 0px;
-  }
-  .icon {
-    width: 25px;
-    height: 25px;
-    background: rgba(0, 0, 0, 0.2);
-    margin-right: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    i {
+      margin-left: 15px;
+    }
+    &:hover {
+      background: darken($primary, 5%);
+    }
   }
 
   #menu {
     display: flex;
     flex-wrap: wrap;
-
+    margin-bottom: 20px;
     a {
       font-size: 14px;
       color: #404040;
@@ -132,20 +157,22 @@ body {
       padding: 0;
       padding: 6px 12px;
       text-decoration: none;
-      border: 1px solid rgba(0, 0, 0, 0.25);
+      border: 1px solid $grey-light;
       text-align: center;
       border-radius: 5px;
-      margin: 2px;
+      margin: 4px;
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
 
       &:hover {
-        background: #3074a4;
+        background: $info;
         color: #ffffff;
+        border-color: $info;
       }
       &.active {
-        background-color: #3887be;
+        background-color: $info;
+        border-color: $info;
         color: #ffffff;
       }
     }

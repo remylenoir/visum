@@ -19,6 +19,19 @@ let toggleableLayerIds = [
   "collisions"
 ];
 
+//define awesome font to layers
+let dayCare = "fa-child";
+let bikeLane = "fa-bicycle";
+let bikeShelters = "fa-warehouse";
+let hurricaneCenter = "fa-wind";
+let wifi = "fa-wifi";
+let airport = "fa-plane";
+let cityPark = "fa-tree";
+let golf = "fa-golf-ball";
+let skateparks = "fa-smile";
+let athletic = "fa-running";
+let collisions = "fa-car-crash";
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFndWV0dGVkaW1zdW0iLCJhIjoiY2p1cjU5bWV3MDg4ejRkbjZ5YTF6bzNibSJ9.5TvJkViFSKc4l9p9JX-41w";
 

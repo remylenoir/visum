@@ -7,10 +7,22 @@
   <div class="side-menu">
     <div class="toggle-collapse"></div>
     <nav id="menu"></nav>
+
+    <div class="field has-addons">
+      <div class="control">
+        <input class="input" type="url" id="current-url" value="">
+      </div>
+      <div class="control">
+        <a class="button copy-url is-info" data-clipboard-target="#current-url">
+          Copy
+        </a>
+      </div>
+    </div>
+
   </div>
 
   {{!-- Interactive data's changes console --}}
-  <div class="side-menu-option">
+  <div class=" side-menu-option">
 
     <div id="collisions-infobox">
       <h2>Motor vehicle collisions</h2>
@@ -73,5 +85,6 @@
 {{!-- <script src="/javascripts/mapbox/layers/healthcenter.js"></script> --}}
 {{!-- <script src="/javascripts/mapbox/layers/contours.js"></script> --}}
 
+<script src="/javascripts/mapbox/functions/clipboard.min.js"></script>
 <script src="/javascripts/mapbox/functions/layers-toggle.js"></script>
 <script src="/javascripts/mapbox/mapbox.js"></script>

@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector(".modal-close");
   const loginSignupModal = document.querySelector(".modal");
   const loginSignupBtn = document.querySelector(".button.login-signup-btn");
+  const mapFilterMenuContent = document.querySelector(".side-menu-content");
 
   //log in form modal and tab toggle
   loginTab.addEventListener("click", e => {
@@ -61,4 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+});
+
+//map filter panel toggle
+document.querySelector(".toggle-collapse").addEventListener("click", e => {
+  let target = e.target;
+  if (target.classList.contains("fa-chevron-left")) {
+    target.classList.remove("fa-chevron-left");
+    target.classList.add("fa-chevron-right");
+  } else if (target.classList.contains("fa-chevron-right")) {
+    target.classList.add("fa-chevron-left");
+    target.classList.remove("fa-chevron-right");
+  }
+  document.querySelector(".side-menu-content").classList.toggle("hide");
+  document.querySelector(".side-menu").classList.toggle("collapsed");
+  document.querySelector(".layer-icon").classList.toggle("show");
 });

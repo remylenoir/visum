@@ -11106,8 +11106,9 @@ a.navbar-item,
 
 a,
 a.button,
-.toggle-collapse {
-  transition: 0.25s ease-in-out; }
+.toggle-collapse,
+.side-menu {
+  transition: all 0.25s ease-in-out; }
 
 body {
   margin: 0;
@@ -11187,6 +11188,18 @@ body {
       margin-left: 15px; }
     .side-menu .toggle-collapse:hover {
       background: #00b89c; }
+  .side-menu .layer-icon {
+    width: 36px;
+    height: 36px;
+    display: none;
+    text-align: center;
+    color: #fff; }
+    .side-menu .layer-icon i {
+      font-size: 24px; }
+  .side-menu .show {
+    display: block; }
+  .side-menu .hide {
+    display: none; }
   .side-menu #menu {
     display: flex;
     flex-wrap: wrap;
@@ -11213,6 +11226,10 @@ body {
         background-color: #209cee;
         border-color: #209cee;
         color: #ffffff; }
+
+.side-menu.collapsed {
+  width: 60px;
+  background: #363636; }
 
 .side-menu-option {
   position: absolute;

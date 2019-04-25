@@ -43,9 +43,12 @@ $modal-content-width: 430px;
 //global transition
 a,
 a.button,
-.toggle-collapse {
-  transition: 0.25s ease-in-out;
+.toggle-collapse,
+.side-menu {
+  transition: all 0.25s ease-in-out;
 }
+
+$layer-icon-width: 36px;
 
 body {
   margin: 0;
@@ -146,6 +149,24 @@ body {
     }
   }
 
+  .layer-icon {
+    width: $layer-icon-width;
+    height: $layer-icon-width;
+    display: none;
+    text-align: center;
+    color: #fff;
+    i {
+      font-size: 24px;
+    }
+  }
+
+  .show {
+    display: block;
+  }
+  .hide {
+    display: none;
+  }
+
   #menu {
     display: flex;
     flex-wrap: wrap;
@@ -177,6 +198,11 @@ body {
       }
     }
   }
+}
+
+.side-menu.collapsed {
+  width: 60px;
+  background: $dark;
 }
 
 //Temporary side menu option styling

@@ -106,6 +106,8 @@ map.on("load", function() {
       activeLayers.forEach(layer => {
         // Update the URL with the user's saved layers
         ADD_URL_PARAMS(layer);
+        // Update the Share-link URL
+        SHARE_URL.value = window.location.href;
 
         // Show the user's saved layers
         map.setLayoutProperty(layer, "visibility", "visible");
@@ -121,20 +123,20 @@ map.on("load", function() {
 
   SHARE_URL.value = window.location.href;
 
-  // add markers to map
-  easterEgg.features.forEach(function(marker) {
-    // create a DOM element for the marker
-    var el = document.createElement("div");
-    el.className = "marker";
-    el.style.backgroundImage = `url(${marker.properties.image})`;
-    el.style.width = marker.properties.iconSize[0] + "px";
-    el.style.height = marker.properties.iconSize[1] + "px";
+  // // add markers to map
+  // easterEgg.features.forEach(function(marker) {
+  //   // create a DOM element for the marker
+  //   var el = document.createElement("div");
+  //   el.className = "marker";
+  //   el.style.backgroundImage = `url(${marker.properties.image})`;
+  //   el.style.width = marker.properties.iconSize[0] + "px";
+  //   el.style.height = marker.properties.iconSize[1] + "px";
 
-    el.addEventListener("click", function() {});
+  //   el.addEventListener("click", function() {});
 
-    // add marker to map
-    new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
-  });
+  //   // add marker to map
+  //   new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
+  // });
 });
 
 // Show/hide layers function with buttons

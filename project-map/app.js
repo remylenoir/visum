@@ -64,7 +64,7 @@ const authenticationCheck = (req, res, next) => {
 };
 
 // default value for title local
-app.locals.title = "Welcome to project map";
+app.locals.title = "Welcome to Visum";
 
 // Enable authentication using session + passport
 app.use(

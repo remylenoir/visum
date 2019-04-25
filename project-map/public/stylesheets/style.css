@@ -11153,29 +11153,38 @@ body {
     .home section .info a {
       align-self: center; }
 
+.icon {
+  font-size: 16px;
+  margin-right: 10px; }
+
 .side-menu {
   background: #f9f9f9;
-  padding: 10px;
+  padding: 20px 10px;
   position: relative;
   width: 28%;
   height: auto;
   margin-top: 150px;
   left: 10px; }
+  .side-menu h6.subtitle {
+    margin-bottom: 10px; }
   .side-menu .toggle-collapse {
     position: absolute;
-    width: 30px;
-    height: 50px;
-    background: #2dc4b2;
-    right: -30px;
-    top: 0px; }
-  .side-menu .icon {
-    width: 25px;
-    height: 25px;
-    background: rgba(0, 0, 0, 0.2);
-    margin-right: 10px; }
+    width: 40px;
+    height: 60px;
+    background: #fa7c91;
+    right: -40px;
+    top: 0px;
+    color: #fff;
+    display: flex;
+    align-items: center; }
+    .side-menu .toggle-collapse i {
+      margin-left: 15px; }
+    .side-menu .toggle-collapse:hover {
+      background: #ff5a77; }
   .side-menu #menu {
     display: flex;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    margin-bottom: 20px; }
     .side-menu #menu a {
       font-size: 14px;
       color: #404040;
@@ -11186,7 +11195,7 @@ body {
       border: 1px solid rgba(0, 0, 0, 0.25);
       text-align: center;
       border-radius: 5px;
-      margin: 2px;
+      margin: 4px;
       display: flex;
       flex-direction: row-reverse;
       align-items: center; }

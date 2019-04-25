@@ -24,7 +24,7 @@ $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $purple;
 $link: $pink;
-$widescreen-enabled: false;
+$widescreen-enabled: true;
 $fullhd-enabled: false;
 
 // Update some of Bulma's component variables
@@ -97,34 +97,45 @@ body {
   }
 }
 
+.icon {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
 //Temporary side menu styling
 .side-menu {
   background: #f9f9f9;
-  padding: 10px;
+  padding: 20px 10px;
   position: relative;
   width: 28%;
   height: auto;
   margin-top: 150px;
   left: 10px;
+  h6.subtitle {
+    margin-bottom: 10px;
+  }
   .toggle-collapse {
     position: absolute;
-    width: 30px;
-    height: 50px;
-    background: #2dc4b2;
-    right: -30px;
+    width: 40px;
+    height: 60px;
+    background: $pink;
+    right: -40px;
     top: 0px;
-  }
-  .icon {
-    width: 25px;
-    height: 25px;
-    background: rgba(0, 0, 0, 0.2);
-    margin-right: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    i {
+      margin-left: 15px;
+    }
+    &:hover {
+      background: darken(pink, 20%);
+    }
   }
 
   #menu {
     display: flex;
     flex-wrap: wrap;
-
+    margin-bottom: 20px;
     a {
       font-size: 14px;
       color: #404040;
@@ -135,7 +146,7 @@ body {
       border: 1px solid rgba(0, 0, 0, 0.25);
       text-align: center;
       border-radius: 5px;
-      margin: 2px;
+      margin: 4px;
       display: flex;
       flex-direction: row-reverse;
       align-items: center;

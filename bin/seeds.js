@@ -9,10 +9,11 @@ const User = require("../models/User");
 
 const bcryptSalt = 10;
 
+const mongoConnectURI =
+  process.env.NODE_ENV === "development" ? "mongodb://localhost/project-map" : process.env.MONGODB_URI;
+
 mongoose
-  .connect(process.env.HEROKUMONGO, {
-    useNewUrlParser: true
-  })
+  .connect(mongoConnectURI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })

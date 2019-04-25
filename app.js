@@ -13,10 +13,11 @@ const passport = require("passport");
 const session = require("express-session");
 const flash = require("connect-flash");
 
+const mongoConnectURI =
+  process.env.NODE_ENV === "development" ? "mongodb://localhost/project-map" : process.env.MONGODB_URI;
+
 mongoose
-  .connect(process.env.HEROKUMONGO, {
-    useNewUrlParser: true
-  })
+  .connect(mongoConnectURI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
@@ -66,7 +67,7 @@ const authenticationCheck = (req, res, next) => {
 };
 
 // default value for title local
-app.locals.title = "Welcome to project map";
+app.locals.title = "Welcome to Visum";
 
 // Enable authentication using session + passport
 app.use(

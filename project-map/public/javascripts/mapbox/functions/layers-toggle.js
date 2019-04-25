@@ -19,7 +19,7 @@ const toggleLayers = () => {
     var id = toggleableLayerIds[i];
 
     let icon = document.createElement("div");
-    icon.className = "icon";
+    icon.className = "icon fas";
 
     var link = document.createElement("a");
     link.id = id;
@@ -27,6 +27,19 @@ const toggleLayers = () => {
     link.className = "";
     link.textContent = id;
     link.appendChild(icon);
+
+    //add a class depends on their ID
+    if (link.id === "day-care-center") icon.classList.add(dayCare);
+    if (link.id === "bike-lane") icon.classList.add(bikeLane);
+    if (link.id === "bike-shelters") icon.classList.add(bikeShelters);
+    if (link.id === "hurricane-evacuation-center") icon.classList.add(hurricaneCenter);
+    if (link.id === "wifi-hotspot") icon.classList.add(wifi);
+    if (link.id === "airport") icon.classList.add(airport);
+    if (link.id === "park") icon.classList.add(cityPark);
+    if (link.id === "golf") icon.classList.add(golf);
+    if (link.id === "skateparks") icon.classList.add(skateparks);
+    if (link.id === "athletic-facilities") icon.classList.add(athletic);
+    if (link.id === "collisions") icon.classList.add(collisions);
 
     link.onclick = function(e) {
       var clickedLayer = this.textContent;

@@ -293,9 +293,10 @@ body {
 }
 .card.login-signup-form {
   width: 30%;
-.mapboxgl-ctrl-top-right {
-  top: 10px;
-  right: 10px;
+  .mapboxgl-ctrl-top-right {
+    top: 10px;
+    right: 10px;
+  }
 }
 
 // login signup modal

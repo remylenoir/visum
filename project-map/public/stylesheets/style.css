@@ -11283,7 +11283,6 @@ body {
 #map-view .mapboxgl-ctrl-geocoder {
   min-width: 100%; }
 
-<<<<<<< HEAD
 .login-signup-wrapper {
   width: 100vh;
   height: 100vh;
@@ -11293,11 +11292,9 @@ body {
 
 .card.login-signup-form {
   width: 30%; }
-=======
-.mapboxgl-ctrl-top-right {
-  top: 10px;
-  right: 10px; }
->>>>>>> 04966efb0bd29000547e9e00146a6324d0e7b8ad
+  .card.login-signup-form .mapboxgl-ctrl-top-right {
+    top: 10px;
+    right: 10px; }
 
 .modal .modal-close {
   position: fixed; }

@@ -11104,6 +11104,11 @@ a.navbar-item,
     .section.is-large {
       padding: 18rem 1.5rem; } }
 
+a,
+a.button,
+.toggle-collapse {
+  transition: 0.25s ease-in-out; }
+
 body {
   margin: 0;
   padding: 0;
@@ -11171,16 +11176,17 @@ body {
     position: absolute;
     width: 40px;
     height: 60px;
-    background: #fa7c91;
+    background: #00d1b2;
     right: -40px;
     top: 0px;
     color: #fff;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer; }
     .side-menu .toggle-collapse i {
       margin-left: 15px; }
     .side-menu .toggle-collapse:hover {
-      background: #ff5a77; }
+      background: #00b89c; }
   .side-menu #menu {
     display: flex;
     flex-wrap: wrap;
@@ -11192,7 +11198,7 @@ body {
       padding: 0;
       padding: 6px 12px;
       text-decoration: none;
-      border: 1px solid rgba(0, 0, 0, 0.25);
+      border: 1px solid #d0d1cd;
       text-align: center;
       border-radius: 5px;
       margin: 4px;
@@ -11200,10 +11206,12 @@ body {
       flex-direction: row-reverse;
       align-items: center; }
       .side-menu #menu a:hover {
-        background: #3074a4;
-        color: #ffffff; }
+        background: #209cee;
+        color: #ffffff;
+        border-color: #209cee; }
       .side-menu #menu a.active {
-        background-color: #3887be;
+        background-color: #209cee;
+        border-color: #209cee;
         color: #ffffff; }
 
 .side-menu-option {

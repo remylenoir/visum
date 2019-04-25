@@ -1,4 +1,21 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="home">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="info">
+          <div class="wrapper">
+            <h1 class="title">
+              Map project
+            </h1>
+            <a href="/map" class="button is-primary">Experience</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="home-map"></div>
+</div>
 
-<h2>This is a welcome page for the map project!</h2>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+<script src="/javascripts/mapbox/home-map.js"></script>

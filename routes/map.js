@@ -23,6 +23,17 @@ router.get("/api", (req, res, next) => {
   }
 });
 
+// router.get("/api/delete", (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     const userId = req.user._id;
+//     User.find({ _id: userId })
+//       .then(data => res.json(data))
+//       .catch(err => {
+//         console.error(err);
+//       });
+//   }
+// });
+
 router.get("/api/user", (req, res, next) => {
   res.json(req.user);
 });
@@ -32,6 +43,19 @@ router.post("/api", (req, res, next) => {
   if (req.isAuthenticated()) {
     const { activeLayers } = req.body;
     User.findOneAndUpdate({ _id: req.user._id }, { mapLayer: activeLayers })
+      .then(data => res.json(data))
+      .catch(err => {
+        console.error(err);
+      });
+  }
+});
+
+router.post("/api/delete", (req, res, next) => {
+  if (req.isAuthenticated()) {
+    const activeLayer = req.body.activeLayer;
+    console.log(activeLayer);
+    const _id = req.user._id;
+    User.findOneAndUpdate({ _id }, { $pull: { mapLayer: activeLayer } })
       .then(data => res.json(data))
       .catch(err => {
         console.error(err);

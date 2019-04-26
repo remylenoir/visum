@@ -383,8 +383,15 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  h4 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
   .profile-img img {
     border-radius: 100%;
+    margin-bottom: 20px;
+  }
+  ul {
     margin-bottom: 20px;
   }
 }

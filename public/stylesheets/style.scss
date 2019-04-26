@@ -331,8 +331,8 @@ nav {
 
 //Temporary side menu option styling
 .side-menu-option {
-  position: relative;
-  top: 40px;
+  position: absolute;
+  bottom: 40px;
   width: 100%;
   margin: 0 15px;
 
@@ -470,6 +470,33 @@ nav {
 }
 
 // // Responsive
+// Greater than or equal to 1024px
+@media only screen and (min-width: 1024px) {
+  #collisions-infobox {
+    .description {
+      width: 28% !important;
+    }
+    .casualty {
+      width: 22% !important;
+    }
+    .sliderbar {
+      width: 20% !important;
+    }
+    .days {
+      width: 22% !important;
+    }
+  }
+}
+// Smaller than or equal to 1024px
+@media only screen and (max-width: 1023px) {
+  #collisions-infobox {
+    display: none;
+
+    &.active {
+      display: none !important;
+    }
+  }
+}
 @media only screen and (max-width: 780px) {
   // Geocoder & side-menu
   #geocoder,
@@ -494,27 +521,6 @@ nav {
         min-height: 40px;
         padding: 6px 12px;
       }
-    }
-  }
-
-  #collisions-infobox {
-    display: none;
-
-    .description,
-    .casualty,
-    .sliderbar,
-    .days {
-      width: 100% !important;
-    }
-    .days {
-      #filters {
-        display: flex;
-        justify-content: space-around;
-        align-items: first baseline;
-      }
-    }
-    &.active {
-      display: none !important;
     }
   }
 

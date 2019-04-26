@@ -11416,9 +11416,21 @@ nav .navbar-brand .navbar-burger {
   .user-profile ul {
     margin-bottom: 20px; }
 
+@media only screen and (min-width: 1024px) {
+  #collisions-infobox .description {
+    width: 28% !important; }
+  #collisions-infobox .casualty {
+    width: 22% !important; }
+  #collisions-infobox .sliderbar {
+    width: 20% !important; }
+  #collisions-infobox .days {
+    width: 22% !important; } }
+
 @media only screen and (max-width: 1023px) {
+  .side-menu-option,
   #collisions-infobox {
     display: none; }
+    .side-menu-option.active,
     #collisions-infobox.active {
       display: none !important; } }
 
@@ -11428,8 +11440,6 @@ nav .navbar-brand .navbar-burger {
     max-width: 260px; }
   .side-menu {
     top: 150px; }
-    .side-menu-option {
-      top: -40px; }
     .side-menu #menu {
       flex-direction: column;
       max-height: 140px;
@@ -11443,15 +11453,5 @@ nav .navbar-brand .navbar-burger {
   .modal-card {
     max-width: 90%;
     height: auto; } }
-
-@media only screen and (min-width: 1024px) {
-  #collisions-infobox .description {
-    width: 28% !important; }
-  #collisions-infobox .casualty {
-    width: 22% !important; }
-  #collisions-infobox .sliderbar {
-    width: 20% !important; }
-  #collisions-infobox .days {
-    width: 22% !important; } }
 
 /*# sourceMappingURL=style.css.map */

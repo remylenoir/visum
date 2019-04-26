@@ -457,7 +457,7 @@ nav {
   }
 }
 
-//Profile page
+// Profile page
 .user-profile {
   display: flex;
   justify-content: center;
@@ -476,9 +476,28 @@ nav {
   }
 }
 
-// // Responsive
+// Responsive
+// Greater than or equal to 1024px
+@media only screen and (min-width: 1024px) {
+  #collisions-infobox {
+    .description {
+      width: 28% !important;
+    }
+    .casualty {
+      width: 22% !important;
+    }
+    .sliderbar {
+      width: 20% !important;
+    }
+    .days {
+      width: 22% !important;
+    }
+  }
+}
+
 // Smaller than or equal to 1024px
 @media only screen and (max-width: 1023px) {
+  .side-menu-option,
   #collisions-infobox {
     display: none;
 
@@ -498,10 +517,6 @@ nav {
   .side-menu {
     top: 150px;
 
-    &-option {
-      top: -40px;
-    }
-
     #menu {
       flex-direction: column;
       max-height: 140px;
@@ -520,23 +535,5 @@ nav {
   .modal-card {
     max-width: 90%;
     height: auto;
-  }
-}
-
-// Greater than or equal to 1024px
-@media only screen and (min-width: 1024px) {
-  #collisions-infobox {
-    .description {
-      width: 28% !important;
-    }
-    .casualty {
-      width: 22% !important;
-    }
-    .sliderbar {
-      width: 20% !important;
-    }
-    .days {
-      width: 22% !important;
-    }
   }
 }

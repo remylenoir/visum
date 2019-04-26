@@ -498,7 +498,7 @@ nav {
       }
     }
     &.active {
-      flex-direction: column;
+      display: none !important;
     }
   }
 }

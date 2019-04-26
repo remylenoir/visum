@@ -35,6 +35,34 @@ let collisions = "fa-car-crash";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFndWV0dGVkaW1zdW0iLCJhIjoiY2p1cjU5bWV3MDg4ejRkbjZ5YTF6bzNibSJ9.5TvJkViFSKc4l9p9JX-41w";
 
+//some custom data
+const easterEggData = {
+  features: [
+    {
+      type: "Feature",
+      properties: {
+        title: "master eddie",
+        description: "Master of none"
+      },
+      geometry: {
+        coordinates: [-74.0001, 40.716927],
+        type: "Point"
+      }
+    },
+    {
+      type: "Feature",
+      properties: {
+        title: "Remynator",
+        description: "Styles of beyond"
+      },
+      geometry: {
+        coordinates: [-74.045809, 40.689526],
+        type: "Point"
+      }
+    }
+  ]
+};
+
 var map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/baguettedimsum/cjuwhqoe80f9v1fmlhjgkjlcd",
@@ -122,23 +150,7 @@ map.on("load", function() {
     });
 
   SHARE_URL.value = window.location.href;
-
-  // // add markers to map
-  // easterEgg.features.forEach(function(marker) {
-  //   // create a DOM element for the marker
-  //   var el = document.createElement("div");
-  //   el.className = "marker";
-  //   el.style.backgroundImage = `url(${marker.properties.image})`;
-  //   el.style.width = marker.properties.iconSize[0] + "px";
-  //   el.style.height = marker.properties.iconSize[1] + "px";
-
-  //   el.addEventListener("click", function() {});
-
-  //   // add marker to map
-  //   new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
-  // });
 });
-
 //map filter panel toggle
 document.querySelector(".toggle-collapse").addEventListener("click", e => {
   let target = e.target;
@@ -154,5 +166,44 @@ document.querySelector(".toggle-collapse").addEventListener("click", e => {
   document.querySelector(".layer-icon").classList.toggle("show");
 });
 
+//add emoji to custom serch
+// function forwardGeocoder(query) {
+//   var matchingFeatures = [];
+//   for (var i = 0; i < easterEggData.features.length; i++) {
+//     var feature = easterEggData.features[i];
+//     // handle queries with different capitalization than the source data by calling toLowerCase()
+//     if (feature.properties.title.toLowerCase().search(query.toLowerCase()) !== -1) {
+//       // add a tree emoji as a prefix for custom data results
+//       // using carmen geojson format: https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+//       feature["place_name"] = "🇭🇰" + "🦖" + feature.properties.title;
+//       feature["center"] = feature.geometry.coordinates;
+//       feature["place_type"] = ["point"];
+//       matchingFeatures.push(feature);
+//     }
+//   }
+//   return matchingFeatures;
+// }
+
 // Show/hide layers function with buttons
 toggleLayers();
+
+// add markers to map
+function addEasterEgg() {
+  easterEgg.features.forEach(marker => {
+    // create a DOM element for the marker
+    var el = document.createElement("div");
+    el.className = "marker";
+    el.style.backgroundImage = `url(${marker.properties.image})`;
+    el.style.width = marker.properties.iconSize[0] + "px";
+    el.style.height = marker.properties.iconSize[1] + "px";
+
+    el.addEventListener("click", function() {});
+
+    // add marker to map
+    new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
+  });
+}
+
+document.querySelector(".eggz").addEventListener("click", () => {
+  addEasterEgg();
+});

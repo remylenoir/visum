@@ -11454,4 +11454,20 @@ nav .navbar-brand .navbar-burger {
     max-width: 90%;
     height: auto; } }
 
+.eggz {
+  width: 30px;
+  height: 30px;
+  background: url("https://res.cloudinary.com/baguettedimsum/image/upload/v1556276721/profile-pic/easter-egg_jd1ztc.png") no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+  z-index: 10;
+  cursor: pointer;
+  animation: jump 0.5s linear infinite 5s; }
+
+@keyframes jump {
+  50% {
+    transform: translateY(3px); } }
+
 /*# sourceMappingURL=style.css.map */

@@ -60,6 +60,7 @@ const toggleLayers = () => {
 
         // If the user is logged-in > remove the layer from the user's profile
         activeLayers = activeLayers.filter(layer => layer !== clickedLayer);
+
         axios
           .post(PROJECT_URL, { activeLayers })
           .then(res => {

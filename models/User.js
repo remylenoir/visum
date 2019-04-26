@@ -25,6 +25,9 @@ const userSchema = new Schema(
     },
     mapLayer: {
       type: Array
+    },
+    url: {
+      type: String
     }
   },
   {

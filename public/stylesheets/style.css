@@ -11115,6 +11115,16 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif; }
 
+.container-fluid {
+  position: relative;
+  width: 100vw;
+  height: 100vh; }
+
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100vw; }
+
 nav .profile-pic {
   width: 30px;
   height: 30px;
@@ -11220,10 +11230,10 @@ nav .navbar-brand .navbar-burger {
 .side-menu {
   width: 345px;
   height: auto;
+  top: 135px;
   left: 15px;
   padding: 20px;
-  margin-top: 75px;
-  position: relative;
+  position: absolute;
   background: #f9f9f9;
   border-radius: 4px 0 4px 4px;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1); }
@@ -11404,7 +11414,7 @@ nav .navbar-brand .navbar-burger {
   .side-menu {
     max-width: 260px; }
   .side-menu {
-    margin-top: 90px; }
+    top: 150px; }
     .side-menu-option {
       top: -40px; }
     .side-menu #menu {
@@ -11428,6 +11438,9 @@ nav .navbar-brand .navbar-burger {
       justify-content: space-around;
       align-items: first baseline; }
     #collisions-infobox.active {
-      display: none !important; } }
+      display: none !important; }
+  .modal-content,
+  .modal-card {
+    max-width: 90%; } }
 
 /*# sourceMappingURL=style.css.map */

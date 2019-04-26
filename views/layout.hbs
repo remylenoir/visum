@@ -20,164 +20,170 @@
 </head>
 
 <body>
-  {{!-- top navbar --}}
-  <nav class="navbar" role="navigation" aria-label="main navigation">
 
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        Visum
-      </a>
+  <div class="container-fluid">
 
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-        data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
+    {{!-- top navbar --}}
+    <nav class="navbar" role="navigation" aria-label="main navigation">
 
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
+      <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          Home
+          Visum
         </a>
-        <a class="navbar-item" href="/map">
-          New York City
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+          data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-end">
-        {{#if isAuthenticated}}
-        <div class="navbar-item user-details">
-          <a href="/auth/profile" class="navbar-item-profile">
-            <span class="username">{{username}}</span>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            Home
           </a>
-          <a href="/auth/profile">
-            <img src="{{profileImgPath}}" alt="" class="profile-pic">
+          <a class="navbar-item" href="/map">
+            New York City
           </a>
-
         </div>
 
-        <a href="/auth/logout" class="navbar-item">
-          Logout
-        </a>
-        {{else}}
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button signup-btn is-primary login-signup-btn">
-              <strong>Login / Signup</strong>
+        <div class="navbar-end">
+          {{#if isAuthenticated}}
+          <div class="navbar-item user-details">
+            <a href="/auth/profile" class="navbar-item-profile">
+              <span class="username">{{username}}</span>
             </a>
+            <a href="/auth/profile">
+              <img src="{{profileImgPath}}" alt="" class="profile-pic">
+            </a>
+
           </div>
+
+          <a href="/auth/logout" class="navbar-item">
+            Logout
+          </a>
+          {{else}}
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button signup-btn is-primary login-signup-btn">
+                <strong>Login / Signup</strong>
+              </a>
+            </div>
+          </div>
+          {{/if}}
+
         </div>
-        {{/if}}
-
       </div>
-    </div>
-    </div>
-
-  </nav>
 
 
-  {{{body}}}
+    </nav>
 
-  <div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="login-modal">
-        <ul class="tab-group">
-          <li class="tab active login"><a href="#login">Log In</a></li>
-          <li class="tab signup"><a href="#signup">Sign Up</a></li>
-        </ul>
 
-        <div class="tab-content">
-          {{!-- signup --}}
-          <div id="signup" class="">
-            <h1 class="title is-3">Sign Up for Free!</h1>
+    {{{body}}}
 
-            <form action="/auth/signup" method="POST" id="form-container-signup" enctype="multipart/form-data">
-              <div class="field">
-                <label for="photo" class="label">Profile picture</label>
-                <div class="control">
-                  {{!-- <input type="file" name="photo" class="input"> --}}
-                  <div class="file">
-                    <label class="file-label">
-                      <input class="file-input" type="file" name="photo">
-                      <span class="file-cta">
-                        <span class="file-icon">
-                          <i class="fas fa-upload"></i>
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="login-modal">
+          <ul class="tab-group">
+            <li class="tab active login"><a href="#login">Log In</a></li>
+            <li class="tab signup"><a href="#signup">Sign Up</a></li>
+          </ul>
+
+          <div class="tab-content">
+            {{!-- signup --}}
+            <div id="signup" class="">
+              <h1 class="title is-3">Sign Up for Free!</h1>
+
+              <form action="/auth/signup" method="POST" id="form-container-signup" enctype="multipart/form-data">
+                <div class="field">
+                  <label for="photo" class="label">Profile picture</label>
+                  <div class="control">
+                    {{!-- <input type="file" name="photo" class="input"> --}}
+                    <div class="file">
+                      <label class="file-label">
+                        <input class="file-input" type="file" name="photo">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Choose a file…
+                          </span>
                         </span>
-                        <span class="file-label">
-                          Choose a file…
-                        </span>
-                      </span>
-                    </label>
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field">
-                <label for="username" class="label">Username</label>
-                <div class="control">
-                  <input type="text" name="username" placeholder="JonSnow" class="input">
+                <div class="field">
+                  <label for="username" class="label">Username</label>
+                  <div class="control">
+                    <input type="text" name="username" placeholder="JonSnow" class="input">
+                  </div>
                 </div>
-              </div>
 
-              <div class="field">
-                <label for="password" class="label">Password</label>
-                <div class="control">
-                  <input type="password" name="password" placeholder="Your password" class="input">
+                <div class="field">
+                  <label for="password" class="label">Password</label>
+                  <div class="control">
+                    <input type="password" name="password" placeholder="Your password" class="input">
+                  </div>
                 </div>
-              </div>
-              {{#if message }}
-              <div class="error-message">{{ message }}</div>
-              {{/if}}
+                {{#if message }}
+                <div class="error-message">{{ message }}</div>
+                {{/if}}
 
-              <div class="field is-grouped-right is-grouped">
-                <div class="control">
-                  <button class="button is-primary">Create account</button>
+                <div class="field is-grouped-right is-grouped">
+                  <div class="control">
+                    <button class="button is-primary">Create account</button>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
 
-          {{!-- login form --}}
-          <div id="login" class="active">
-            <h1 class="title is-3">Welcome back!</h1>
-            <form action="/auth/login" method="POST" id="form-container-login">
+            {{!-- login form --}}
+            <div id="login" class="active">
+              <h1 class="title is-3">Welcome back!</h1>
+              <form action="/auth/login" method="POST" id="form-container-login">
 
-              <div class="field">
-                <label for="username" class="label">Username</label>
-                <div class="control">
-                  <input type="text" name="username" placeholder="JonSnow" class="input">
+                <div class="field">
+                  <label for="username" class="label">Username</label>
+                  <div class="control">
+                    <input type="text" name="username" placeholder="JonSnow" class="input">
+                  </div>
                 </div>
-              </div>
 
-              <div class="field">
-                <label for="password" class="label">Password</label>
-                <div class="control">
-                  <input type="password" name="password" placeholder="Your password" class="input">
+                <div class="field">
+                  <label for="password" class="label">Password</label>
+                  <div class="control">
+                    <input type="password" name="password" placeholder="Your password" class="input">
+                  </div>
                 </div>
-              </div>
 
-              {{#if message }}
-              <div class="error-message">{{ message }}</div>
-              {{/if}}
+                {{#if message }}
+                <div class="error-message">{{ message }}</div>
+                {{/if}}
 
-              <div class="field is-grouped-right is-grouped">
-                <div class="constrol">
-                  <button class="button is-primary">Login</button>
+                <div class="field is-grouped-right is-grouped">
+                  <div class="constrol">
+                    <button class="button is-primary">Login</button>
+                  </div>
                 </div>
-              </div>
 
-            </form>
+              </form>
 
+            </div>
           </div>
         </div>
+        <button class="modal-close is-large" aria-label="close"></button>
       </div>
-      <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
-    <script src="/javascripts/basic-dom.js"></script>
+  </div>
+
+  <script src="/javascripts/basic-dom.js"></script>
 </body>
 
 </html>

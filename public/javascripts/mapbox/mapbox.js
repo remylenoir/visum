@@ -7,16 +7,16 @@ const SHARE_URL = document.getElementById("current-url");
 
 // Layers's IDs to show/hide
 let toggleableLayerIds = [
-  "day-care-center",
+  "collisions",
   "bike-routes",
   "bike-shelters",
   "wifi-hotspot",
-  "hurricane-evacuation-center",
+  "day-care-center",
   "airport",
   "park",
-  "golf",
   "athletic-facilities",
-  "collisions"
+  "hurricane-evacuation-center",
+  "golf"
 ];
 
 //define awesome font to layers

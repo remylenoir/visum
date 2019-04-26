@@ -2,7 +2,7 @@
 <div id="map"></div>
 {{!-- Map search and filter menu --}}
 <div id="map-view">
-  <div id='geocoder' class='geocoder'></div>
+  <div id="geocoder" class="geocoder"></div>
 
   <div class="side-menu">
     <div class="toggle-collapse"><i class="fas fa-chevron-left"></i></div>
@@ -13,7 +13,7 @@
 
       <hr>
 
-      <h6 class="subtitle is-6">Share your map with a friend!</h6>
+      <h6 class="subtitle is-6">Share your map with a friend</h6>
       <div class="share-url field has-addons">
         <div class="control control-input">
           <input class="input" type="url" id="current-url" value="">
@@ -27,18 +27,20 @@
     </div>
   </div>
 
-  {{!-- Interactive data's changes console --}}
+  {{!-- Interactive data"s changes console --}}
   <div class=" side-menu-option">
 
     <div id="collisions-infobox">
-      <h2>Motor vehicle collisions</h2>
-      <p>Data: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">Motor
-          vehicle
-          collision injuries and deaths</a> in NYC, Apr 2019
-      </p>
+      <div class="description">
+        <h2>Motor vehicle collisions</h2>
+        <p>Data: <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">Motor
+            vehicle
+            collision injuries and deaths</a> in NYC, Apr 2019
+        </p>
+      </div>
 
-      <div class="session">
-        <h3>Casualty</h3>
+      <div class="session casualty">
+        <h2>Casualty</h2>
         <div class="row colors">
         </div>
         <div class="row labels">
@@ -52,19 +54,20 @@
       </div>
 
 
-      <div class='session' id='sliderbar'>
-        <h2>Hour: <label id='active-hour'>12PM</label></h2>
-        <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
+      <div class="session sliderbar" id="sliderbar">
+        <h2>Hour: <label id="active-hour">12PM</label></h2>
+        <input id="slider" class="row" type="range" min="0" max="23" step="1" value="12" />
       </div>
-      <div class='session'>
+
+      <div class="session days">
         <h2>Day of the week</h2>
-        <div class='row' id='filters'>
-          <input id='all' type='radio' name='toggle' value='all' checked='checked'>
-          <label for='all'>All</label>
-          <input id='weekday' type='radio' name='toggle' value='weekday'>
-          <label for='weekday'>Weekday</label>
-          <input id='weekend' type='radio' name='toggle' value='weekend'>
-          <label for='weekend'>Weekend</label>
+        <div class="row" id="filters">
+          <input id="all" type="radio" name="toggle" value="all" checked="checked">
+          <label for="all">All</label>
+          <input id="weekday" type="radio" name="toggle" value="weekday">
+          <label for="weekday">Weekday</label>
+          <input id="weekend" type="radio" name="toggle" value="weekend">
+          <label for="weekend">Weekend</label>
         </div>
       </div>
     </div>
@@ -72,8 +75,8 @@
   </div>
 </div>
 
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js'></script>
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js"></script>
 
 {{!-- DATA LAYERS --}}
 <script src="/javascripts/mapbox/layers/easter.js"></script>

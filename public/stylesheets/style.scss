@@ -41,7 +41,37 @@ $input-border-color: transparent;
 $input-shadow: none;
 $modal-content-width: 430px;
 
+// Other elements properties
+$layer-icon-size: 22px;
+$uiboxes: 345px;
+
+//global transition
+a,
+a.button,
+.toggle-collapse,
+.side-menu {
+  transition: all 0.25s ease-in-out;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $family-sans-serif;
+}
+
+// Main container
+.container-fluid {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
 // Top Nav bar
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
 nav {
   .profile-pic {
     width: 30px;
@@ -53,6 +83,10 @@ nav {
     font-size: 14px;
     margin-right: 10px;
     color: $dark;
+
+    &:hover {
+      color: #3273dc;
+    }
   }
   .navbar-brand {
     .navbar-item {
@@ -64,25 +98,15 @@ nav {
       }
     }
     .navbar-burger {
-      height: 60px;
+      height: 65px;
     }
   }
 }
 
-//global transition
-a,
-a.button,
-.toggle-collapse,
-.side-menu {
-  transition: all 0.25s ease-in-out;
-}
-
-$layer-icon-width: 36px;
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: $family-sans-serif;
+//error message
+.error-message {
+  font-weight: bold;
+  color: red;
 }
 
 //basic-map
@@ -92,10 +116,18 @@ body {
   top: 65px;
   bottom: 0;
   width: 100%;
+  // height: 100vh;
   height: calc(100vh - 65px);
 }
 
 #map-view {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
+
   .session {
     margin-bottom: 20px;
   }
@@ -112,6 +144,20 @@ body {
     display: inline-block;
     text-align: center;
   }
+  .geocoder {
+    position: absolute;
+    z-index: 1;
+    width: $uiboxes;
+    left: 15px;
+    top: 85px;
+  }
+  .mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+  }
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+  margin: 15px 15px 0;
 }
 
 //home section
@@ -122,19 +168,39 @@ body {
     height: 100vh;
     background: rgba(0, 0, 0, 0.7);
     z-index: 1;
+
+    .hero-container {
+      padding: 0;
+    }
+
     .info {
-      .wrapper {
-        display: flex;
-      }
       width: 100%;
       height: 100vh;
       display: flex;
       align-items: center;
+      flex-direction: column;
+      justify-content: center;
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
       h1 {
-        font-size: 3em;
-        margin: 0;
-        margin-right: 20px;
+        font-family: $brand;
+        font-size: 8em;
+        margin: 0 0 40px;
         color: #fff;
+        align-self: center;
+        text-align: center;
+      }
+      h2 {
+        font-size: 1.2em;
+        color: #fff;
+        margin: 0 0 40px;
+        align-self: center;
+        text-align: center;
+        padding: 0 30px;
       }
       a {
         align-self: center;
@@ -150,16 +216,20 @@ body {
 
 //Temporary side menu styling
 .side-menu {
-  background: #f9f9f9;
-  padding: 20px 10px;
-  position: relative;
-  width: 28%;
+  width: $uiboxes;
   height: auto;
-  margin-top: 150px;
+  top: 135px;
   left: 15px;
+  padding: 20px;
+  position: absolute;
+  background: #f9f9f9;
+  border-radius: 4px 0 4px 4px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+
   h6.subtitle {
     margin-bottom: 10px;
   }
+
   .toggle-collapse {
     position: absolute;
     width: 40px;
@@ -171,17 +241,20 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-radius: 0 4px 4px 0;
+
     i {
       margin-left: 15px;
     }
+
     &:hover {
       background: darken($primary, 5%);
     }
   }
 
   .layer-icon {
-    width: $layer-icon-width;
-    height: $layer-icon-width;
+    width: $layer-icon-size;
+    height: $layer-icon-size;
     display: none;
     text-align: center;
     color: $dark;
@@ -191,7 +264,9 @@ body {
   }
 
   .show {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .hide {
     display: none;
@@ -251,28 +326,47 @@ body {
   width: 60px;
   height: 60px;
   background: $beige-lighter;
+  border-radius: 4px 0 0 4px;
 }
 
 //Temporary side menu option styling
 .side-menu-option {
   position: absolute;
-  width: 260px;
-  height: auto;
-  top: 180px;
-  right: 30px;
+  bottom: 40px;
+  width: 100%;
+  margin: 0 15px;
 
   // Data's detailled view w/ filters
   #collisions-infobox {
     display: none;
-    width: 240px;
-    padding: 10px 20px;
-    transform: translateX(-340px);
+    width: calc(100% - 30px);
+    padding: 20px;
+    border-radius: 4px;
     background-color: white;
-    transition: all ease-in-out 700ms;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+
+    .description {
+      width: 20%;
+    }
+    .casualty {
+      width: 20%;
+    }
+    .sliderbar {
+      width: 20%;
+    }
+    .days {
+      width: 20%;
+
+      #filters {
+        display: flex;
+        justify-content: space-around;
+        align-items: first baseline;
+      }
+    }
 
     &.active {
-      display: block;
-      transform: translateX(10px);
+      display: flex;
+      justify-content: space-around;
     }
 
     h2 {
@@ -288,20 +382,6 @@ body {
       text-decoration: none;
       color: #2dc4b2;
     }
-  }
-}
-
-//geo coder styling
-#map-view {
-  .geocoder {
-    position: absolute;
-    z-index: 1;
-    width: 30%;
-    left: 15px;
-    top: 85px;
-  }
-  .mapboxgl-ctrl-geocoder {
-    min-width: 100%;
   }
 }
 
@@ -325,7 +405,7 @@ body {
 
 .login-modal {
   background: #fff;
-  padding-bottom: 80px;
+  padding-bottom: 30px;
   .tab-group {
     list-style: none;
     padding: 0;
@@ -362,7 +442,7 @@ body {
 }
 
 .tab-content {
-  padding: 0 100px;
+  padding: 0 50px;
   #signup {
     display: none;
   }
@@ -396,8 +476,64 @@ body {
   }
 }
 
-//error message
-.error-message {
-  font-weight: bold;
-  color: red;
+// // Responsive
+// Greater than or equal to 1024px
+@media only screen and (min-width: 1024px) {
+  #collisions-infobox {
+    .description {
+      width: 28% !important;
+    }
+    .casualty {
+      width: 22% !important;
+    }
+    .sliderbar {
+      width: 20% !important;
+    }
+    .days {
+      width: 22% !important;
+    }
+  }
+}
+// Smaller than or equal to 1024px
+@media only screen and (max-width: 1023px) {
+  #collisions-infobox {
+    display: none;
+
+    &.active {
+      display: none !important;
+    }
+  }
+}
+@media only screen and (max-width: 780px) {
+  // Geocoder & side-menu
+  #geocoder,
+  .side-menu {
+    max-width: 260px;
+  }
+  .side-menu {
+    top: 150px;
+
+    &-option {
+      top: -40px;
+    }
+
+    #menu {
+      flex-direction: column;
+      max-height: 140px;
+      overflow-y: scroll;
+      flex-wrap: nowrap;
+
+      a {
+        justify-content: center;
+        min-height: 40px;
+        padding: 6px 12px;
+      }
+    }
+  }
+
+  .modal-content,
+  .modal-card {
+    max-width: 90%;
+    height: auto;
+  }
 }

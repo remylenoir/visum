@@ -11220,10 +11220,10 @@ nav .navbar-brand .navbar-burger {
       color: #fff;
       margin: 0 0 40px;
       align-self: center;
-      text-align: center; }
+      text-align: center;
+      padding: 0 30px; }
     .home section .info a {
-      align-self: center;
-      margin-bottom: 4em; }
+      align-self: center; }
 
 .icon {
   font-size: 16px;
@@ -11443,8 +11443,7 @@ nav .navbar-brand .navbar-burger {
       display: none !important; }
   .modal-content,
   .modal-card {
-    max-width: 90%; }
-  .home section .info a {
-    margin-bottom: 0em; } }
+    max-width: 90%;
+    height: auto; } }
 
 /*# sourceMappingURL=style.css.map */

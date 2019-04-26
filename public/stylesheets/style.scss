@@ -200,10 +200,10 @@ nav {
         margin: 0 0 40px;
         align-self: center;
         text-align: center;
+        padding: 0 30px;
       }
       a {
         align-self: center;
-        margin-bottom: 4em;
       }
     }
   }
@@ -471,6 +471,7 @@ nav {
 
 // // Responsive
 @media only screen and (max-width: 780px) {
+  // Geocoder & side-menu
   #geocoder,
   .side-menu {
     max-width: 260px;
@@ -520,15 +521,6 @@ nav {
   .modal-content,
   .modal-card {
     max-width: 90%;
-  }
-
-  .home {
-    section {
-      .info {
-        a {
-          margin-bottom: 0em;
-        }
-      }
-    }
+    height: auto;
   }
 }

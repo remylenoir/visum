@@ -68,7 +68,7 @@ body {
 
 // Top Nav bar
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw;
 }
@@ -468,6 +468,9 @@ nav {
     margin-bottom: 10px;
   }
   .profile-img img {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
     border-radius: 100%;
     margin-bottom: 20px;
   }

@@ -75,7 +75,8 @@ var map = new mapboxgl.Map({
 
 // Add zoom+rotation and fullscreen controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
-map.addControl(new mapboxgl.FullscreenControl());
+// map.addControl(new mapboxgl.FullscreenControl());
+map.addControl(new mapboxgl.FullscreenControl({ container: document.querySelector("body") }));
 
 // Geo Search function
 let geocoder = new MapboxGeocoder({

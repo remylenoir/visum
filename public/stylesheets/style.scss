@@ -470,23 +470,6 @@ nav {
 }
 
 // // Responsive
-// Greater than or equal to 1024px
-@media only screen and (min-width: 1024px) {
-  #collisions-infobox {
-    .description {
-      width: 28% !important;
-    }
-    .casualty {
-      width: 22% !important;
-    }
-    .sliderbar {
-      width: 20% !important;
-    }
-    .days {
-      width: 22% !important;
-    }
-  }
-}
 // Smaller than or equal to 1024px
 @media only screen and (max-width: 1023px) {
   #collisions-infobox {
@@ -497,6 +480,8 @@ nav {
     }
   }
 }
+
+// Smaller than or equal to 780px
 @media only screen and (max-width: 780px) {
   // Geocoder & side-menu
   #geocoder,
@@ -528,5 +513,23 @@ nav {
   .modal-card {
     max-width: 90%;
     height: auto;
+  }
+}
+
+// Greater than or equal to 1024px
+@media only screen and (min-width: 1024px) {
+  #collisions-infobox {
+    .description {
+      width: 28% !important;
+    }
+    .casualty {
+      width: 22% !important;
+    }
+    .sliderbar {
+      width: 20% !important;
+    }
+    .days {
+      width: 22% !important;
+    }
   }
 }

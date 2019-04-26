@@ -11411,16 +11411,6 @@ nav .navbar-brand .navbar-burger {
     border-radius: 100%;
     margin-bottom: 20px; }
 
-@media only screen and (min-width: 1024px) {
-  #collisions-infobox .description {
-    width: 28% !important; }
-  #collisions-infobox .casualty {
-    width: 22% !important; }
-  #collisions-infobox .sliderbar {
-    width: 20% !important; }
-  #collisions-infobox .days {
-    width: 22% !important; } }
-
 @media only screen and (max-width: 1023px) {
   #collisions-infobox {
     display: none; }
@@ -11448,5 +11438,15 @@ nav .navbar-brand .navbar-burger {
   .modal-card {
     max-width: 90%;
     height: auto; } }
+
+@media only screen and (min-width: 1024px) {
+  #collisions-infobox .description {
+    width: 28% !important; }
+  #collisions-infobox .casualty {
+    width: 22% !important; }
+  #collisions-infobox .sliderbar {
+    width: 20% !important; }
+  #collisions-infobox .days {
+    width: 22% !important; } }
 
 /*# sourceMappingURL=style.css.map */

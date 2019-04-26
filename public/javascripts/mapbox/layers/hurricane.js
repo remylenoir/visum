@@ -19,15 +19,15 @@ const addHurricaneCenter = () => {
 
   // When a click event occurs on a feature in the places layer, open a popup at the
   // location of the feature, with description HTML from its properties.
-  map.on("click", id, el => {
-    const coordinates = el.features[0].geometry.coordinates.slice();
-    const address = el.features[0].properties.address;
+  map.on("click", id, e => {
+    const coordinates = e.features[0].geometry.coordinates.slice();
+    const address = e.features[0].properties.address;
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
     // over the copy being pointed to.
-    while (Math.abs(el.lngLat.lng - coordinates[0]) > 180) {
-      coordinates[0] += el.lngLat.lng > coordinates[0] ? 360 : -360;
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+      coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
     new mapboxgl.Popup({

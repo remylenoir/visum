@@ -60,8 +60,8 @@ const addDayCareCenter = () => {
   });
 
   // inspect a cluster on click
-  map.on("click", id, el => {
-    var features = map.queryRenderedFeatures(el.point, { layers: [id] });
+  map.on("click", id, e => {
+    var features = map.queryRenderedFeatures(e.point, { layers: [id] });
     var clusterId = features[0].properties.cluster_id;
 
     map.getSource(source).getClusterExpansionZoom(clusterId, (err, zoom) => {
@@ -75,18 +75,18 @@ const addDayCareCenter = () => {
 
   // When a click event occurs on a feature in the places layer, open a popup at the
   // location of the feature, with description HTML from its properties.
-  map.on("click", "dcc-unclustered-point", el => {
-    const coordinates = el.features[0].geometry.coordinates.slice();
-    const name = el.features[0].properties.name;
-    const streetname = el.features[0].properties.streetname;
-    const streenumber = el.features[0].properties.housenum;
+  map.on("click", "dcc-unclustered-point", e => {
+    const coordinates = e.features[0].geometry.coordinates.slice();
+    const name = e.features[0].properties.name;
+    const streetname = e.features[0].properties.streetname;
+    const streenumber = e.features[0].properties.housenum;
     const address = `${streenumber} ${streetname}`;
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
     // over the copy being pointed to.
-    while (Math.abs(el.lngLat.lng - coordinates[0]) > 180) {
-      coordinates[0] += el.lngLat.lng > coordinates[0] ? 360 : -360;
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+      coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
     new mapboxgl.Popup({

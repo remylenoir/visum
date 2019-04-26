@@ -11364,7 +11364,7 @@ nav .navbar-brand .navbar-burger {
 
 .login-modal {
   background: #fff;
-  padding-bottom: 80px; }
+  padding-bottom: 30px; }
   .login-modal .tab-group {
     list-style: none;
     padding: 0;
@@ -11392,7 +11392,7 @@ nav .navbar-brand .navbar-burger {
     display: none; }
 
 .tab-content {
-  padding: 0 100px; }
+  padding: 0 50px; }
   .tab-content #signup {
     display: none; }
   .tab-content #login {

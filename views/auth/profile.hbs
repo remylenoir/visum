@@ -1,41 +1,72 @@
-<div class="section">
-  <div class="container">
-    <div class="user-profile">
-      <div class="profile-img">
-        <img src="{{profileImgPath}}" alt="{{profileImgName}}">
-      </div>
+<div class="container-fluid">
 
-      <h1 class="title is-2" id="{{_id}}">{{username}}</h1>
-      {{#if mapLayer}}
-      <ul>
-        <h4>My favourites map filters:</h4>
-        {{#each mapLayer}}
-        <li class="button is-danger is-outlined delete-filter">
-          <span class="layer-id">{{this}}</span>
+  <section class="hero is-primary">
+    <div class="hero-body" style="margin-top: 65px">
+      <div class="container">
 
-          <i class="fas fa-times icon is-small"></i>
-
-        </li>
-        {{/each}}
-      </ul>
-      {{else}}
-      <h4>You don't have any favoutite map filters yet</h4>
-      {{/if}}
-
-      <div class="field">
-        <div class="control">
-          <a href="/auth/delete" class="button is-danger">Delete profile</a>
+        <div class="user-profile">
+          <div class="profile-img">
+            <img src="{{profileImgPath}}" alt="{{profileImgName}}">
+          </div>
         </div>
+
+        <h1 class="title is-2 has-text-centered" id="{{_id}}">{{username}}</h1>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container" style="padding: 0 30px">
+
+      <div class="user-profile" style="margin-top: 65px">
+
+        <h2 class="is-size-2 has-text-weight-bold">My favorites map filters:</h2>
+
+        <hr>
+
+        {{#if mapLayer}}
+        <ul>
+          {{#each mapLayer}}
+          <li class="button is-danger is-outlined delete-filter">
+            <span class="layer-id">{{this}}</span>
+
+            <i class="fas fa-times icon is-small"></i>
+
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <h4>You don't have any favorite map filters yet, <a href="/map">start now!</a></h4>
+        {{/if}}
+
+        <hr>
+
+        <section class="message is-danger">
+          <div class="message-body">
+
+            <h4><span class="has-text-weight-bold">Danger zone:</span> delete my profile</h4>
+            <p>Once you delete your profile, there is no going back. <u>Please be certain</u>.</p>
+            <p><br></p>
+            <div class="field">
+              <div class="control has-text-centered">
+                <a href="/auth/delete" class="button is-danger">Delete my profile</a>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <hr>
+
       </div>
 
     </div>
-  </div>
+  </section>
+
 </div>
 
-
 <script>
-
-
   function updatFilters(activeLayer) {
     axios
       .post(`${PROJECT_URL}/delete`, { activeLayer })
@@ -57,5 +88,4 @@
         parent.removeChild(e.target.parentElement)
       })
     })
-
 </script>

@@ -11121,7 +11121,7 @@ body {
   height: 100vh; }
 
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100vw; }
 
@@ -11411,6 +11411,9 @@ nav .navbar-brand .navbar-burger {
     text-align: center;
     margin-bottom: 10px; }
   .user-profile .profile-img img {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
     border-radius: 100%;
     margin-bottom: 20px; }
   .user-profile ul {

@@ -139,5 +139,20 @@ map.on("load", function() {
   // });
 });
 
+//map filter panel toggle
+document.querySelector(".toggle-collapse").addEventListener("click", e => {
+  let target = e.target;
+  if (target.classList.contains("fa-chevron-left")) {
+    target.classList.remove("fa-chevron-left");
+    target.classList.add("fa-chevron-right");
+  } else if (target.classList.contains("fa-chevron-right")) {
+    target.classList.add("fa-chevron-left");
+    target.classList.remove("fa-chevron-right");
+  }
+  document.querySelector(".side-menu-content").classList.toggle("hide");
+  document.querySelector(".side-menu").classList.toggle("collapsed");
+  document.querySelector(".layer-icon").classList.toggle("show");
+});
+
 // Show/hide layers function with buttons
 toggleLayers();

@@ -31,15 +31,14 @@
           Visum
         </a>
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-          data-target="navbarBasicExample">
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbar" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href="/">
             Home
@@ -58,13 +57,14 @@
             <a href="/auth/profile">
               <img src="{{profileImgPath}}" alt="" class="profile-pic">
             </a>
-
           </div>
 
           <a href="/auth/logout" class="navbar-item">
             Logout
           </a>
+
           {{else}}
+
           <div class="navbar-item">
             <div class="buttons">
               <a class="button signup-btn is-primary login-signup-btn">
@@ -73,13 +73,10 @@
             </div>
           </div>
           {{/if}}
-
         </div>
       </div>
 
-
     </nav>
-
 
     {{{body}}}
 

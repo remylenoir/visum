@@ -11213,12 +11213,14 @@ nav .navbar-brand .navbar-burger {
       font-size: 8em;
       margin: 0 0 40px;
       color: #fff;
-      align-self: center; }
+      align-self: center;
+      text-align: center; }
     .home section .info h2 {
       font-size: 1.2em;
       color: #fff;
       margin: 0 0 40px;
-      align-self: center; }
+      align-self: center;
+      text-align: center; }
     .home section .info a {
       align-self: center;
       margin-bottom: 4em; }
@@ -11441,6 +11443,8 @@ nav .navbar-brand .navbar-burger {
       display: none !important; }
   .modal-content,
   .modal-card {
-    max-width: 90%; } }
+    max-width: 90%; }
+  .home section .info a {
+    margin-bottom: 0em; } }
 
 /*# sourceMappingURL=style.css.map */

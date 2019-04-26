@@ -59,6 +59,7 @@ body {
   font-family: $family-sans-serif;
 }
 
+// Main container
 .container-fluid {
   position: relative;
   width: 100vw;
@@ -191,12 +192,14 @@ nav {
         margin: 0 0 40px;
         color: #fff;
         align-self: center;
+        text-align: center;
       }
       h2 {
         font-size: 1.2em;
         color: #fff;
         margin: 0 0 40px;
         align-self: center;
+        text-align: center;
       }
       a {
         align-self: center;
@@ -517,5 +520,15 @@ nav {
   .modal-content,
   .modal-card {
     max-width: 90%;
+  }
+
+  .home {
+    section {
+      .info {
+        a {
+          margin-bottom: 0em;
+        }
+      }
+    }
   }
 }

@@ -24,7 +24,7 @@
 
       <div class="field">
         <div class="control">
-          <div class="button is-danger">Delete profile</div>
+          <a href="/auth/delete" class="button is-danger">Delete profile</a>
         </div>
       </div>
 
@@ -46,10 +46,7 @@
         console.error(err);
       });
   }
-
-
   //user profile remove filer
-
   document.querySelectorAll(".delete-filter .icon")
     .forEach(el => {
       el.addEventListener("click", function (e) {

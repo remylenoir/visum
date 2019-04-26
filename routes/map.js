@@ -23,17 +23,6 @@ router.get("/api", (req, res, next) => {
   }
 });
 
-// router.get("/api/delete", (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     const userId = req.user._id;
-//     User.find({ _id: userId })
-//       .then(data => res.json(data))
-//       .catch(err => {
-//         console.error(err);
-//       });
-//   }
-// });
-
 router.get("/api/user", (req, res, next) => {
   res.json(req.user);
 });

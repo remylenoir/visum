@@ -27,6 +27,13 @@ router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
+router.get("/delete", (req, res, next) => {
+  const _id = req.user._id;
+  User.findOneAndDelete({ _id }).then(() => {
+    res.redirect("/map");
+  });
+});
+
 router.post("/signup", uploadCloud.single("photo"), (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;

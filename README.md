@@ -5,7 +5,7 @@
 Visum allows you to visualize insightful & real data of New York City.  
 This app was made with [@roosterhack](https://github.com/roosterhack) during the second module of the [Ironhack Web Development Bootcamp](https://www.ironhack.com/en), in a time span of 4 days.
 
-###### What the app is about?
+###### What is the app about?
 
 The initial idea was to create an app where you could compare cities based on their data, visualize the data as layers displayed on the map and also animate real time data from public transportation using [gtfs](https://gtfs.org/) ([see an example](https://hvv.live/)).  
 

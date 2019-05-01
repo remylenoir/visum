@@ -9,7 +9,7 @@ This app was made with [@roosterhack](https://github.com/roosterhack) during the
 
 The initial idea was to create an app where you could compare cities based on their data, visualize the data as layers displayed on the map and also animate real time data from public transportation using [gtfs](https://gtfs.org/) ([see an example](https://hvv.live/)).  
 
-We have decided to exclude these features from the MVP and focus our work on one city.  
+We have decided to exclude the compare and animation features from the MVP and focus our work on displaying the data with one city.  
 
 ###### Prizes _(votes from the class)_
 
@@ -17,7 +17,7 @@ Best app: First place :1st_place_medal:
 
 ###### Technologies used
 
-[Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/api/), MongoDB, Express, Node, Handlebars, API, Bulma.
+Mapbox GL JS, MongoDB, Express, Node, Handlebars, API, Bulma.
 
 ------
 
@@ -31,6 +31,7 @@ Best app: First place :1st_place_medal:
 
 - As a registered user, you can save the active filters, access to them and delete them from your profile. The saved filters will be automatically displayed on the map from your profile anytime you use the app.
 - Share the map with the active filters, the filters will be automatically displayed on the map.
+- Search for locations and POIs using the search bar
 
 ## Data:  
 
@@ -51,9 +52,15 @@ Best app: First place :1st_place_medal:
 
 ###### Data gathering
 
+One of the biggest challenges was to gather the data in the correct format (.geojson), with proper set of coordinates. We had to reject most of the data we wanted to display (i.e. Crime rate) because the available data was given as an .xls file without any coordinates, it would have took us more time to display it in a proper way.
+
+###### Data displaying
+
+We wanted to display the data in it's best way, we had to analyse the data and choose how to highlight it (with color fill, lines, heatmap, interactive clusters…).
+
 ------
 
 ## Sources:
 
-- [NYC Open Data ](https://data.cityofnewyork.us)
+- All the datasets: [NYC Open Data ](https://data.cityofnewyork.us)
 

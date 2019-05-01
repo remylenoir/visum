@@ -53,7 +53,9 @@ Mapbox GL JS, MongoDB, Express, Node, Handlebars, API, Bulma.
 
 ###### Data gathering
 
-One of the biggest challenges was to gather the data in the correct format (.geojson), with proper set of coordinates. We had to reject most of the data we wanted to display (i.e. Crime rate) because the available data was given as an .xls file without any coordinates, it would have took us more time to display it in a proper way.
+One of the biggest challenges was to gather the data in the correct format (.geojson), with proper set of coordinates.  
+
+We have rejected most of the data we wanted to display (i.e. Crime rate) because the available data was given as an .xls file without any coordinates, it would have took us more time to display it in a proper way.
 
 ###### Data displaying
 

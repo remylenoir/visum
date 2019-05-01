@@ -29,8 +29,12 @@ Mapbox GL JS, MongoDB, Express, Node, Handlebars, API, Bulma.
 
 - As a guest, you can play with the filters, however you cannot save the active filters.
 
-- As a registered user, you can save the active filters, access to them and delete them from your profile. The saved filters will be automatically displayed on the map from your profile anytime you use the app.
+- As a registered user, you can save the active filters, access to them and delete them from your profile. 
+
+  The saved filters will be automatically displayed on the map from your profile anytime you use the app.
+
 - Share the map with the active filters, the filters will be automatically displayed on the map.
+
 - Search for locations and POIs using the search bar
 
 ## Data:  

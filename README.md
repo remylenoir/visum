@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Visum allows you to Visualize insightful & real data of New York City.  
+Visum allows you to visualize insightful & real data of New York City.  
 This app was made with [@roosterhack](https://github.com/roosterhack) during the second module of the [Ironhack Web Development Bootcamp](https://www.ironhack.com/en), in a time span of 4 days.
 
 ###### What the app is about?

@@ -9,7 +9,7 @@ This app was made with [@roosterhack](https://github.com/roosterhack) during the
 
 The initial idea was to create an app where you could compare cities based on their data, visualize the data as layers displayed on the map and also animate real time data from public transportation using [gtfs](https://gtfs.org/) ([see an example](https://hvv.live/)).  
 
-We have decided to exclude the compare and animation features from the MVP and focus our work on displaying the data with one city.  
+After the research and the brainstorming to define the MVP, we created a Trello board to define and split the tasks for the project. We decided to exclude the compare and animation features from the MVP and focus our work on displaying the data with one city.  
 
 ###### Prizes _(votes from the class)_
 

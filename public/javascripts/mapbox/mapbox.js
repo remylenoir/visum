@@ -152,6 +152,17 @@ map.on("load", function() {
 
   SHARE_URL.value = window.location.href;
 });
+
+// Hide the filters after 1500ms
+initialSideHide = () => {
+  setTimeout(() => {
+    document.querySelector(".side-menu-content").classList.toggle("hide");
+    document.querySelector(".side-menu").classList.toggle("collapsed");
+    document.querySelector(".layer-icon").classList.toggle("show");
+  }, 1500);
+};
+initialSideHide();
+
 //map filter panel toggle
 document.querySelector(".toggle-collapse").addEventListener("click", e => {
   let target = e.target;

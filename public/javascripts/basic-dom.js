@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector(".modal-close");
   const loginSignupModal = document.querySelector(".modal");
   const loginSignupBtn = document.querySelector(".button.login-signup-btn");
-  const mapFilterMenuContent = document.querySelector(".side-menu-content");
 
   //log in form modal and tab toggle
   loginTab.addEventListener("click", e => {
